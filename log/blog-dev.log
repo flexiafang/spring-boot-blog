@@ -1,0 +1,53 @@
+2020-07-06 22:36:18.581  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on PC-20190831FNSZ with PID 7544 (G:\projects\spring-boot-blog\target\classes started by Administrator in G:\projects\spring-boot-blog)
+2020-07-06 22:36:18.585 DEBUG 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-06 22:36:18.585  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-06 22:36:18.636  INFO 7544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-06 22:36:18.636  INFO 7544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-06 22:36:19.661  WARN 7544 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-06 22:36:20.372  INFO 7544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-06 22:36:20.383  INFO 7544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-06 22:36:20.383  INFO 7544 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-06 22:36:20.512  INFO 7544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-06 22:36:20.513  INFO 7544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1877 ms
+2020-07-06 22:36:20.886  INFO 7544 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-06 22:36:21.005  INFO 7544 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-06 22:36:21.752  INFO 7544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-06 22:36:21.790  INFO 7544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-06 22:36:21.802  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 3.788 seconds (JVM running for 4.605)
+2020-07-06 22:36:31.723  INFO 7544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-06 22:36:31.724  INFO 7544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-06 22:36:31.737  INFO 7544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-07-06 22:36:31.764  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Request: RequestLog{url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.flexia.web.IndexController.index', args=[]}
+2020-07-06 22:36:31.788  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Result: index
+2020-07-06 22:36:31.789  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : doAfter方法执行了
+2020-07-06 22:37:35.469  INFO 7544 --- [http-nio-8080-exec-6] com.flexia.aspect.LogAspect              : Request: RequestLog{url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.flexia.web.IndexController.index', args=[]}
+2020-07-06 22:37:35.470  INFO 7544 --- [http-nio-8080-exec-6] com.flexia.aspect.LogAspect              : Result: index
+2020-07-06 22:37:35.470  INFO 7544 --- [http-nio-8080-exec-6] com.flexia.aspect.LogAspect              : doAfter方法执行了
+2020-07-06 22:38:35.068  INFO 7544 --- [http-nio-8080-exec-7] com.flexia.aspect.LogAspect              : Request: RequestLog{url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.flexia.web.IndexController.index', args=[]}
+2020-07-06 22:38:35.068  INFO 7544 --- [http-nio-8080-exec-7] com.flexia.aspect.LogAspect              : Result: index
+2020-07-06 22:38:35.069  INFO 7544 --- [http-nio-8080-exec-7] com.flexia.aspect.LogAspect              : doAfter方法执行了
+2020-07-06 22:39:19.470  INFO 7544 --- [Thread-167] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-06 22:39:19.617  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on PC-20190831FNSZ with PID 7544 (G:\projects\spring-boot-blog\target\classes started by Administrator in G:\projects\spring-boot-blog)
+2020-07-06 22:39:19.617 DEBUG 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-06 22:39:19.617  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-06 22:39:20.018  WARN 7544 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-06 22:39:20.138  INFO 7544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-06 22:39:20.138  INFO 7544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-06 22:39:20.138  INFO 7544 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-06 22:39:20.169  INFO 7544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-06 22:39:20.169  INFO 7544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 547 ms
+2020-07-06 22:39:20.374  INFO 7544 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-06 22:39:20.424  INFO 7544 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-06 22:39:20.894  INFO 7544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-06 22:39:20.905  INFO 7544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-06 22:39:20.909  INFO 7544 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 1.377 seconds (JVM running for 183.712)
+2020-07-06 22:39:20.911  INFO 7544 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-07-06 22:39:25.534  INFO 7544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-06 22:39:25.534  INFO 7544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-06 22:39:25.548  INFO 7544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2020-07-06 22:39:25.554  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Request: RequestLog{url='http://localhost:8080/', ip='0:0:0:0:0:0:0:1', classMethod='com.flexia.web.IndexController.index', args=[]}
+2020-07-06 22:39:25.563  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Result: index
+2020-07-06 22:39:25.564  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : doAfter方法执行了
+2020-07-06 22:39:29.873  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Request: RequestLog{url='http://localhost:8080/blog', ip='0:0:0:0:0:0:0:1', classMethod='com.flexia.web.IndexController.blog', args=[]}
+2020-07-06 22:39:29.874  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : Result: blog
+2020-07-06 22:39:29.874  INFO 7544 --- [http-nio-8080-exec-1] com.flexia.aspect.LogAspect              : doAfter方法执行了
