@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Author hustffx
  * @Date 2020/7/5 23:52
  */
-//@ControllerAdvice
+@ControllerAdvice
 public class ControllerExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

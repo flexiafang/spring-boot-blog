@@ -1,9 +1,7 @@
-package com.flexia.web;
+package com.flexia.controller;
 
-import com.flexia.exception.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @Author hustffx

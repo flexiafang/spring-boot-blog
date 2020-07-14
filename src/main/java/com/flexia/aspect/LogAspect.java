@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
+ * @Description 日志切面
  * @Author hustffx
  * @Date 2020/7/6 14:59
  */
@@ -21,7 +22,7 @@ public class LogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.flexia.web.*.*(..))")
+    @Pointcut("execution(* com.flexia.controller.*.*(..))")
     public void log() {
     }
 

@@ -6,6 +6,7 @@ spring:
   messages:
     basename: i18n/messages
 
-mybatis:
-  type-aliases-package: com.flexia.entity
-  mapper-locations: com.flexia.maaper.*
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
