@@ -7,6 +7,7 @@ import com.flexia.service.TagService;
 import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,10 +52,11 @@ public class TagServiceImpl implements TagService {
     public Tag updateTag(Tag tag) {
         Tag t = tagMapper.selectByPrimaryKey(tag);
         if (t == null) {
-            throw new NotFoundException("不存在该类型");
+            throw new NotFoundException("不存在该标签");
         }
-        tagMapper.updateByPrimaryKey(tag);
-        return tagMapper.selectByPrimaryKey(tag);
+        BeanUtils.copyProperties(tag, t);
+        tagMapper.updateByPrimaryKey(t);
+        return t;
     }
 
     @Transactional(rollbackFor = Exception.class)

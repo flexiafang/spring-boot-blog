@@ -7,6 +7,7 @@ import com.flexia.service.TypeService;
 import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,10 +54,11 @@ public class TypeServiceImpl implements TypeService {
     public Type updateType(Type type) {
         Type t = typeMapper.selectByPrimaryKey(type);
         if (t == null) {
-            throw new NotFoundException("不存在该类型");
+            throw new NotFoundException("不存在该分类");
         }
-        typeMapper.updateByPrimaryKey(type);
-        return typeMapper.selectByPrimaryKey(type);
+        BeanUtils.copyProperties(type, t);
+        typeMapper.updateByPrimaryKey(t);
+        return t;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -67,7 +69,7 @@ public class TypeServiceImpl implements TypeService {
             count = typeMapper.deleteByPrimaryKey(id);
         } catch (Exception e) {
             Logger logger = LoggerFactory.getLogger(this.getClass());
-            logger.error("Cause exception when delete type. {}",e.getMessage());
+            logger.error("Cause exception when delete type. {}", e.getMessage());
         }
         return count;
     }
