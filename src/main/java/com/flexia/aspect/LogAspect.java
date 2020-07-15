@@ -16,13 +16,13 @@ import java.util.Arrays;
  * @Author hustffx
  * @Date 2020/7/6 14:59
  */
-@Aspect
-@Component
+// @Aspect
+// @Component
 public class LogAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.flexia.controller.*.*(..))")
+    @Pointcut("execution(* com.flexia.controller..*(..))")
     public void log() {
     }
 
@@ -53,11 +53,16 @@ public class LogAspect {
         logger.info("Result: {}", result);
     }
 
-    private class RequestLog {
-        private String url;
-        private String ip;
-        private String classMethod;
-        private Object[] args;
+    @AfterThrowing(pointcut = "log()", throwing = "e")
+    public void doAfterThrowing(Exception e) {
+        logger.error("Exception: {}", e.getClass());
+    }
+
+    private static class RequestLog {
+        private final String url;
+        private final String ip;
+        private final String classMethod;
+        private final Object[] args;
 
         public RequestLog(String url, String ip, String classMethod, Object[] args) {
             this.url = url;

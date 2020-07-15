@@ -1,9 +1,9 @@
 package com.flexia.service.impl;
 
-import com.flexia.entity.Type;
+import com.flexia.entity.Tag;
 import com.flexia.exception.NotFoundException;
-import com.flexia.mapper.TypeMapper;
-import com.flexia.service.TypeService;
+import com.flexia.mapper.TagMapper;
+import com.flexia.service.TagService;
 import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,62 +12,60 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.net.http.HttpRequest;
-
 /**
  * @Author hustffx
  * @Date 2020/7/14
  */
 @Service
-public class TypeServiceImpl implements TypeService {
+public class TagServiceImpl implements TagService {
 
     @Autowired
-    private TypeMapper typeMapper;
+    private TagMapper tagMapper;
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Type saveType(Type type) {
-        int count = typeMapper.insert(type);
-        return count == 1 ? type : null;
+    public Tag saveTag(Tag tag) {
+        int count = tagMapper.insert(tag);
+        return count == 1 ? tag : null;
     }
 
     @Override
-    public Type getTypeById(Long id) {
-        return typeMapper.selectByPrimaryKey(id);
+    public Tag getTagById(Long id) {
+        return tagMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public Page<Type> listType() {
-        return (Page<Type>) typeMapper.selectAll();
+    public Page<Tag> listTag() {
+        return (Page<Tag>) tagMapper.selectAll();
     }
 
     @Override
-    public Type getTypeByName(String name) {
-        Example example = new Example(Type.class);
+    public Tag getTagByName(String name) {
+        Example example = new Example(Tag.class);
         example.createCriteria().andEqualTo("name", name);
-        return typeMapper.selectOneByExample(example);
+        return tagMapper.selectOneByExample(example);
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Type updateType(Type type) {
-        Type t = typeMapper.selectByPrimaryKey(type);
+    public Tag updateTag(Tag tag) {
+        Tag t = tagMapper.selectByPrimaryKey(tag);
         if (t == null) {
             throw new NotFoundException("不存在该类型");
         }
-        typeMapper.updateByPrimaryKey(type);
-        return typeMapper.selectByPrimaryKey(type);
+        tagMapper.updateByPrimaryKey(tag);
+        return tagMapper.selectByPrimaryKey(tag);
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int deleteType(Long id) {
+    public int deleteTag(Long id) {
         int count = 0;
         try {
-            count = typeMapper.deleteByPrimaryKey(id);
+            count = tagMapper.deleteByPrimaryKey(id);
         } catch (Exception e) {
             Logger logger = LoggerFactory.getLogger(this.getClass());
-            logger.error("Cause exception when delete type. {}",e.getMessage());
+            logger.error("Cause exception when delete tag. {}", e.getMessage());
         }
         return count;
     }

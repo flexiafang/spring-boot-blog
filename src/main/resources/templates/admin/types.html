@@ -37,8 +37,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">新增</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" th:href="@{/admin/types/input}" class="item">新增</a>
+            <a href="#" th:href="@{/admin/types}" class="active teal item">列表</a>
         </div>
     </div>
 </div>
@@ -46,6 +46,13 @@
 <!--中间内容-->
 <div class="m-container-small m-padded-tb-big">
     <div class="ui container">
+
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+        </div>
+
         <table class="ui celled table">
             <thead>
             <tr>
@@ -59,20 +66,26 @@
                 <td th:text="${(pageInfo.pageNum-1)*10+iterStat.count}">1</td>
                 <td th:text="${type.name}">刻意练习清单</td>
                 <td>
-                    <a href="#" th:href="@{/admin/types/{id}/input(id=${type.typeId})}" class="ui teal basic button">编辑</a>
-                    <a href="#" th:href="@{/admin/types/{id}/delete(id=${type.typeId})}" class="ui red basic button">删除</a>
+                    <a href="#" th:href="@{/admin/types/{id}/update(id=${type.typeId})}"
+                       class="ui teal basic button">编辑
+                    </a>
+                    <a href="#" th:href="@{/admin/types/{id}/delete(id=${type.typeId})}"
+                       class="ui red basic button">删除
+                    </a>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
                 <th colspan="6">
-                    <div class="ui left floated pagination menu">
-                        <a th:href="@{/admin/types(page=${pageInfo.pageNum}-1)}" class="icon item">
-                            <i class="left chevron icon"></i>&nbsp;上一页
+                    <div class="ui pagination menu" th:if="${pageInfo.total}>1">
+                        <a th:href="@{/admin/types(page=${pageInfo.pageNum}-1)}" class="ui item"
+                           th:unless="${pageInfo.isFirstPage}">
+                            <i class="left chevron icon"></i>上一页
                         </a>
-                        <a th:href="@{/admin/types(page=${pageInfo.pageNum}+1)}" class="icon item">
-                            下一页&nbsp;<i class="right chevron icon"></i>
+                        <a th:href="@{/admin/types(page=${pageInfo.pageNum}+1)}" class="ui item"
+                           th:unless="${pageInfo.isLastPage}">
+                            下一页<i class="right chevron icon"></i>
                         </a>
                     </div>
                     <a href="#" th:href="@{/admin/types/input}" class="ui right floated teal basic button">新增</a>
@@ -82,16 +95,6 @@
         </table>
     </div>
 </div>
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <!--底部footer-->
 <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
@@ -143,6 +146,11 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     })
+
+    // 消息提示关闭初始化
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });
 </script>
 </body>
 </html>

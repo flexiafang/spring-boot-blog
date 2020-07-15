@@ -2,10 +2,8 @@ package com.flexia.entity;
 
 import lombok.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -23,6 +21,8 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long typeId;
+
+    @NotBlank(message = "分类名称不能为空")
     private String name;
 
     @Transient

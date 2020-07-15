@@ -1,7 +1,7 @@
 package com.flexia.controller.admin;
 
-import com.flexia.entity.Type;
-import com.flexia.service.TypeService;
+import com.flexia.entity.Tag;
+import com.flexia.service.TagService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -21,10 +21,10 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/admin")
-public class TypeController {
+public class TagController {
 
     @Autowired
-    private TypeService typeService;
+    private TagService tagService;
 
     /**
      * 分页查询
@@ -33,15 +33,15 @@ public class TypeController {
      * @param model 视图模型
      * @return
      */
-    @GetMapping("/types")
-    public String types(@RequestParam(required = false, defaultValue = "1") String page, Model model) {
+    @GetMapping("/tags")
+    public String tags(@RequestParam(required = false, defaultValue = "1") String page, Model model) {
         // 设置分页参数
         PageHelper.startPage(Integer.parseInt(page), 10);
         // 查询所有分类
-        Page<Type> types = typeService.listType();
-        PageInfo<Type> pageInfo = new PageInfo<>(types);
+        Page<Tag> tags = tagService.listTag();
+        PageInfo<Tag> pageInfo = new PageInfo<>(tags);
         model.addAttribute("pageInfo", pageInfo);
-        return "admin/types";
+        return "admin/tags";
     }
 
     /**
@@ -50,33 +50,33 @@ public class TypeController {
      * @param model
      * @return
      */
-    @GetMapping("/types/input")
+    @GetMapping("/tags/input")
     public String input(Model model) {
-        model.addAttribute("type", new Type());
-        return "admin/type-input";
+        model.addAttribute("tag", new Tag());
+        return "admin/tag-input";
     }
 
     /**
      * 新增分类
      *
-     * @param type       分类
+     * @param tag       分类
      * @param result     参数校验结果
      * @param attributes 重定向属性值
      * @return
      */
-    @PostMapping("/types/input")
-    public String inputPost(@Valid Type type, BindingResult result, RedirectAttributes attributes) {
-        Type t1 = typeService.getTypeByName(type.getName());
+    @PostMapping("/tags/input")
+    public String inputPost(@Valid Tag tag, BindingResult result, RedirectAttributes attributes) {
+        Tag t1 = tagService.getTagByName(tag.getName());
 
         if (t1 != null) {
-            result.rejectValue("name", "nameError", "不能重复添加分类");
+            result.rejectValue("name", "nameError", "不能重复添加标签");
         }
 
         if (result.hasErrors()) {
-            return "admin/type-input";
+            return "admin/tag-input";
         }
 
-        Type t2 = typeService.saveType(type);
+        Tag t2 = tagService.saveTag(tag);
 
         if (t2 == null) {
             attributes.addFlashAttribute("message", "新增失败");
@@ -84,7 +84,7 @@ public class TypeController {
             attributes.addFlashAttribute("message", "新增成功");
         }
 
-        return "redirect:/admin/types";
+        return "redirect:/admin/tags";
     }
 
     /**
@@ -94,33 +94,33 @@ public class TypeController {
      * @param model
      * @return
      */
-    @GetMapping("/types/{id}/update")
+    @GetMapping("/tags/{id}/update")
     public String edit(@PathVariable Long id, Model model) {
-        model.addAttribute("type", typeService.getTypeById(id));
-        return "admin/type-input";
+        model.addAttribute("tag", tagService.getTagById(id));
+        return "admin/tag-input";
     }
 
     /**
      * 更新分类名称
      *
-     * @param type
+     * @param tag
      * @param result
      * @param attributes
      * @return
      */
-    @PostMapping("/types/update")
-    public String editPost(@Valid Type type, BindingResult result, RedirectAttributes attributes) {
-        Type t1 = typeService.getTypeByName(type.getName());
+    @PostMapping("/tags/update")
+    public String editPost(@Valid Tag tag, BindingResult result, RedirectAttributes attributes) {
+        Tag t1 = tagService.getTagByName(tag.getName());
 
         if (t1 != null) {
-            result.rejectValue("name", "nameError", "不能更新为已有分类");
+            result.rejectValue("name", "nameError", "不能更新为已有标签");
         }
 
         if (result.hasErrors()) {
-            return "admin/type-input";
+            return "admin/tag-input";
         }
 
-        Type t2 = typeService.updateType(type);
+        Tag t2 = tagService.updateTag(tag);
 
         if (t2 == null) {
             attributes.addFlashAttribute("message", "更新失败");
@@ -128,7 +128,7 @@ public class TypeController {
             attributes.addFlashAttribute("message", "更新成功");
         }
 
-        return "redirect:/admin/types";
+        return "redirect:/admin/tags";
     }
 
     /**
@@ -137,16 +137,16 @@ public class TypeController {
      * @param id
      * @return
      */
-    @GetMapping("/types/{id}/delete")
-    public String deleteType(@PathVariable Long id, RedirectAttributes attributes) {
-        int count = typeService.deleteType(id);
+    @GetMapping("/tags/{id}/delete")
+    public String deleteTag(@PathVariable Long id, RedirectAttributes attributes) {
+        int count = tagService.deleteTag(id);
 
         if (count == 1) {
             attributes.addFlashAttribute("message", "删除成功");
         } else {
-            attributes.addFlashAttribute("message", "删除失败，该分类不可删除");
+            attributes.addFlashAttribute("message", "删除失败，该标签不可删除");
         }
 
-        return "redirect:/admin/types";
+        return "redirect:/admin/tags";
     }
 }

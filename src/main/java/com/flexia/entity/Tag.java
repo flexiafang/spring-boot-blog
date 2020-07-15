@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -22,7 +23,9 @@ public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long tagId;
+
+    @NotBlank(message = "标签不能为空")
     private String name;
 
     @Transient

@@ -12,13 +12,13 @@ public interface TypeService {
 
     Type saveType(Type type);
 
-    Type getType(Long id);
+    Type getTypeById(Long id);
 
     Page<Type> listType();
 
-    Type getTypeByName(String typename);
+    Type getTypeByName(String name);
 
-    Type updateType(Long id, Type type);
+    Type updateType(Type type);
 
-    void deleteType(Long id);
+    int deleteType(Long id);
 }
