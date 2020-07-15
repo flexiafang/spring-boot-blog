@@ -24,7 +24,7 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long blogId;
     private String title;
     private String content;
     private String firstPicture;
