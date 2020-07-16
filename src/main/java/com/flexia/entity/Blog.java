@@ -25,23 +25,25 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long blogId;
+
     private String title;
     private String content;
     private String firstPicture;
     private String flag;
     private String description;
+
     private Integer views;
-    private boolean appreciation;
-    private boolean shareStatement;
-    private boolean commentable;
-    private boolean published;
-    private boolean recommend;
+    private Boolean appreciation;
+    private Boolean shareStatement;
+    private Boolean comment;
+    private Boolean publish;
+    private Boolean recommend;
+
     private Date createTime;
     private Date updateTime;
 
     private Long typeId;
     private Long userId;
-    private String tagIds;
 
     @Transient
     private Type type;

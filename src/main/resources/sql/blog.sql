@@ -256,6 +256,6 @@ CREATE TABLE `user`
 -- Records of user
 -- ----------------------------
 INSERT INTO `user`
-VALUES ('1', '起风了', 'admin', '21232F297A57A5A743894A0E4A801FC3', '981179142@qq.com',
-        'https://picsum.photos/id/0/600/400',
+VALUES ('1', '小方方', 'hustffx', 'e10adc3949ba59abbe56e057f20f883e', 'fangfengxin98@163.com',
+        'https://picsum.photos/id/883/200/200',
         null, null, null);

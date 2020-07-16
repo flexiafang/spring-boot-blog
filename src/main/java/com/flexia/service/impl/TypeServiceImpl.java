@@ -4,7 +4,6 @@ import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.TypeMapper;
 import com.flexia.service.TypeService;
-import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.net.http.HttpRequest;
+import java.util.List;
 
 /**
  * @Author hustffx
@@ -38,8 +37,8 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public Page<Type> listType() {
-        return (Page<Type>) typeMapper.selectAll();
+    public List<Type> listType() {
+        return typeMapper.selectAll();
     }
 
     @Override

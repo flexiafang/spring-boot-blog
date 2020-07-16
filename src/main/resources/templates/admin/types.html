@@ -78,7 +78,7 @@
             <tfoot>
             <tr>
                 <th colspan="6">
-                    <div class="ui pagination menu" th:if="${pageInfo.total}>1">
+                    <div class="ui pagination menu" th:if="${pageInfo.total}>${pageInfo.pageSize}">
                         <a th:href="@{/admin/types(page=${pageInfo.pageNum}-1)}" class="ui item"
                            th:unless="${pageInfo.isFirstPage}">
                             <i class="left chevron icon"></i>上一页

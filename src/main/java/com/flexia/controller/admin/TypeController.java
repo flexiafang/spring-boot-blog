@@ -38,7 +38,7 @@ public class TypeController {
         // 设置分页参数
         PageHelper.startPage(Integer.parseInt(page), 10);
         // 查询所有分类
-        Page<Type> types = typeService.listType();
+        Page<Type> types = (Page<Type>) typeService.listType();
         PageInfo<Type> pageInfo = new PageInfo<>(types);
         model.addAttribute("pageInfo", pageInfo);
         return "admin/types";

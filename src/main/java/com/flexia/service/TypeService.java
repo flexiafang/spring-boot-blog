@@ -1,7 +1,8 @@
 package com.flexia.service;
 
 import com.flexia.entity.Type;
-import com.github.pagehelper.Page;
+
+import java.util.List;
 
 /**
  * @Description 分类的业务层接口
@@ -14,7 +15,7 @@ public interface TypeService {
 
     Type getTypeById(Long id);
 
-    Page<Type> listType();
+    List<Type> listType();
 
     Type getTypeByName(String name);
 

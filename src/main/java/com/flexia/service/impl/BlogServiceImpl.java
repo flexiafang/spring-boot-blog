@@ -1,16 +1,20 @@
 package com.flexia.service.impl;
 
 import com.flexia.entity.Blog;
+import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
 import com.flexia.service.BlogService;
-import com.github.pagehelper.Page;
+import com.flexia.service.TypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * @Author hustffx
@@ -22,10 +26,8 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogMapper blogMapper;
 
-    @Override
-    public Page<Blog> listBlog() {
-        return (Page<Blog>) blogMapper.selectAll();
-    }
+    @Autowired
+    private TypeService typeService;
 
     @Override
     public Blog getBlogById(Long blogId) {
@@ -62,5 +64,59 @@ public class BlogServiceImpl implements BlogService {
             logger.error("Cause exception when delete blog. {}", e.getMessage());
         }
         return count;
+    }
+
+    /**
+     * 查询所有博客
+     *
+     * @return
+     */
+    @Override
+    public List<Blog> listBlog() {
+        List<Blog> blogs = blogMapper.selectAll();
+        setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
+     * 根据查询条件查询博客列表
+     *
+     * @param title
+     * @param typeId
+     * @param recommend
+     * @return
+     */
+    @Override
+    public List<Blog> getBlogByKeyWords(String title, Long typeId, Boolean recommend) {
+        // 设置查询条件
+        Example example = new Example(Blog.class);
+        Example.Criteria criteria = example.createCriteria();
+
+        if (!"".equals(title) && title != null) {
+            criteria.andLike("title", title);
+        }
+        if (typeId != null) {
+            criteria.andEqualTo("type_id", typeId);
+        }
+        if (recommend) {
+            criteria.andEqualTo("recommend", true);
+        }
+
+        List<Blog> blogs = blogMapper.selectByExample(example);
+        setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
+     * 设置查询得到的博客的相关信息
+     *
+     * @param blogs
+     */
+    private void setBlogProperties(List<Blog> blogs) {
+        for (Blog blog : blogs) {
+            // 获取分类
+            Type type = typeService.getTypeById(blog.getTypeId());
+            blog.setType(type);
+        }
     }
 }

@@ -1,7 +1,9 @@
 package com.flexia.service;
 
 import com.flexia.entity.Blog;
-import com.github.pagehelper.Page;
+import com.flexia.entity.Type;
+
+import java.util.List;
 
 /**
  * @Description 博客的业务层接口
@@ -10,8 +12,6 @@ import com.github.pagehelper.Page;
  */
 public interface BlogService {
 
-    Page<Blog> listBlog();
-
     Blog getBlogById(Long blogId);
 
     Blog saveBlog(Blog blog);
@@ -19,4 +19,8 @@ public interface BlogService {
     Blog updateBlog(Blog blog);
 
     int deleteBlog(Long id);
+
+    List<Blog> listBlog();
+
+    List<Blog> getBlogByKeyWords(String title, Long typeId, Boolean recommend);
 }

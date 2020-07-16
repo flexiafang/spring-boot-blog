@@ -3,6 +3,8 @@ package com.flexia.service;
 import com.flexia.entity.Tag;
 import com.github.pagehelper.Page;
 
+import java.util.List;
+
 /**
  * @Description 分类的业务层接口
  * @Author hustffx
@@ -14,7 +16,7 @@ public interface TagService {
 
     Tag getTagById(Long id);
 
-    Page<Tag> listTag();
+    List<Tag> listTag();
 
     Tag getTagByName(String name);
 

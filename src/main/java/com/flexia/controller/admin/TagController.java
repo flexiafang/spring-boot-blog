@@ -38,7 +38,7 @@ public class TagController {
         // 设置分页参数
         PageHelper.startPage(Integer.parseInt(page), 10);
         // 查询所有分类
-        Page<Tag> tags = tagService.listTag();
+        Page<Tag> tags = (Page<Tag>) tagService.listTag();
         PageInfo<Tag> pageInfo = new PageInfo<>(tags);
         model.addAttribute("pageInfo", pageInfo);
         return "admin/tags";

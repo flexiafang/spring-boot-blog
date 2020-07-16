@@ -4,7 +4,6 @@ import com.flexia.entity.Tag;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.TagMapper;
 import com.flexia.service.TagService;
-import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * @Author hustffx
@@ -36,8 +37,8 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Page<Tag> listTag() {
-        return (Page<Tag>) tagMapper.selectAll();
+    public List<Tag> listTag() {
+        return tagMapper.selectAll();
     }
 
     @Override
