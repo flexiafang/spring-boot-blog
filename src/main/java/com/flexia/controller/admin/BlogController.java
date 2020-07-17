@@ -2,6 +2,7 @@ package com.flexia.controller.admin;
 
 import com.flexia.entity.Blog;
 import com.flexia.entity.Type;
+import com.flexia.entity.User;
 import com.flexia.service.BlogService;
 import com.flexia.service.TagService;
 import com.flexia.service.TypeService;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -54,6 +57,16 @@ public class BlogController {
         return "admin/blogs";
     }
 
+    /**
+     * 根据前端输入来搜索博客
+     *
+     * @param page
+     * @param model
+     * @param title
+     * @param typeId
+     * @param recommend
+     * @return
+     */
     @PostMapping("/blogs/search")
     public String search(@RequestParam(required = false, defaultValue = "1") String page,
                          Model model, String title, Long typeId, Boolean recommend) {
@@ -64,6 +77,12 @@ public class BlogController {
         return "admin/blogs :: blogList";
     }
 
+    /**
+     * 跳转到新增博客页面
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs/input")
     public String input(Model model) {
         model.addAttribute("types", typeService.listType());
@@ -73,4 +92,20 @@ public class BlogController {
     }
 
 
+    @PostMapping("/blogs/post")
+    public String post(Blog blog, String tagIds, HttpSession session, RedirectAttributes attributes) {
+        // 设置博客的相关信息
+        blog.setUser((User) session.getAttribute("user"));
+        blog.setType(typeService.getTypeById(blog.getTypeId()));
+        blog.setTags(tagService.listTag(tagIds));
+
+        Blog b = blogService.saveBlog(blog);
+
+        if (b == null) {
+            attributes.addFlashAttribute("message", "新增失败");
+        } else {
+            attributes.addFlashAttribute("message", "新增成功");
+        }
+        return "redirect:/admin/blogs";
+    }
 }

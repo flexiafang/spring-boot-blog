@@ -25,16 +25,25 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 跳转到登录页面
+     *
+     * @return
+     */
     @GetMapping
     public String loginPage() {
         return "admin/login";
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "admin/index";
-    }
-
+    /**
+     * 提交登录信息，进行用户校验
+     *
+     * @param username
+     * @param password
+     * @param session
+     * @param attributes
+     * @return
+     */
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password,
@@ -51,6 +60,22 @@ public class LoginController {
         }
     }
 
+    /**
+     * 登录成功跳转至 index 页面
+     *
+     * @return
+     */
+    @GetMapping("/index")
+    public String index() {
+        return "admin/index";
+    }
+
+    /**
+     * 注销登录
+     *
+     * @param session
+     * @return
+     */
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");

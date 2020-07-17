@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 /**
- * @Description 分类的控制器
+ * @Description 标签的控制器
  * @Author hustffx
  * @Date 2020/7/14
  */
@@ -37,7 +37,7 @@ public class TagController {
     public String tags(@RequestParam(required = false, defaultValue = "1") String page, Model model) {
         // 设置分页参数
         PageHelper.startPage(Integer.parseInt(page), 10);
-        // 查询所有分类
+        // 查询所有标签
         Page<Tag> tags = (Page<Tag>) tagService.listTag();
         PageInfo<Tag> pageInfo = new PageInfo<>(tags);
         model.addAttribute("pageInfo", pageInfo);
@@ -45,7 +45,7 @@ public class TagController {
     }
 
     /**
-     * 跳转到新增分类页面
+     * 跳转到新增标签页面
      *
      * @param model
      * @return
@@ -57,9 +57,9 @@ public class TagController {
     }
 
     /**
-     * 新增分类
+     * 新增标签
      *
-     * @param tag       分类
+     * @param tag       标签
      * @param result     参数校验结果
      * @param attributes 重定向属性值
      * @return
@@ -88,7 +88,7 @@ public class TagController {
     }
 
     /**
-     * 跳转到编辑分类页面
+     * 跳转到编辑标签页面
      *
      * @param id
      * @param model
@@ -101,7 +101,7 @@ public class TagController {
     }
 
     /**
-     * 更新分类名称
+     * 更新标签名称
      *
      * @param tag
      * @param result
@@ -132,7 +132,7 @@ public class TagController {
     }
 
     /**
-     * 删除分类
+     * 删除标签
      *
      * @param id
      * @return

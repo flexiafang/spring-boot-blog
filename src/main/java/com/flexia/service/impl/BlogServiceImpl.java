@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,6 +38,9 @@ public class BlogServiceImpl implements BlogService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public Blog saveBlog(Blog blog) {
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        blog.setViews(0);
         int count = blogMapper.insert(blog);
         return count == 0 ? null : blog;
     }

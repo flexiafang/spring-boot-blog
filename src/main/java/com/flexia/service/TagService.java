@@ -1,7 +1,6 @@
 package com.flexia.service;
 
 import com.flexia.entity.Tag;
-import com.github.pagehelper.Page;
 
 import java.util.List;
 
@@ -17,6 +16,8 @@ public interface TagService {
     Tag getTagById(Long id);
 
     List<Tag> listTag();
+
+    List<Tag> listTag(String tagIds);
 
     Tag getTagByName(String name);
 

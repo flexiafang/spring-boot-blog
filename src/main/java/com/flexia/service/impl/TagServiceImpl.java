@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +43,38 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public List<Tag> listTag(String tagIds) {
+        List<Tag> tags = new ArrayList<>();
+        List<Long> ids = convertTagIdsToList(tagIds);
+
+        for (Long id : ids) {
+            Tag tag = tagMapper.selectByPrimaryKey(id);
+            tags.add(tag);
+        }
+
+        return tags;
+    }
+
+    /**
+     * 将字符串形式的tagIds转换为列表
+     *
+     * @param tagIds
+     * @return
+     */
+    private List<Long> convertTagIdsToList(String tagIds) {
+        List<Long> list = new ArrayList<>();
+
+        if (!"".equals(tagIds) && tagIds != null) {
+            String[] ids = tagIds.split(",");
+            for (String id : ids) {
+                list.add(Long.valueOf(id));
+            }
+        }
+
+        return list;
+    }
+
+    @Override
     public Tag getTagByName(String name) {
         Example example = new Example(Tag.class);
         example.createCriteria().andEqualTo("name", name);
@@ -52,9 +85,11 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag updateTag(Tag tag) {
         Tag t = tagMapper.selectByPrimaryKey(tag);
+
         if (t == null) {
             throw new NotFoundException("不存在该标签");
         }
+
         BeanUtils.copyProperties(tag, t);
         tagMapper.updateByPrimaryKey(t);
         return t;
@@ -64,12 +99,14 @@ public class TagServiceImpl implements TagService {
     @Override
     public int deleteTag(Long id) {
         int count = 0;
+
         try {
             count = tagMapper.deleteByPrimaryKey(id);
         } catch (Exception e) {
             Logger logger = LoggerFactory.getLogger(this.getClass());
             logger.error("Cause exception when delete tag. {}", e.getMessage());
         }
+
         return count;
     }
 }
