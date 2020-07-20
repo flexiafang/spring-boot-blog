@@ -1,10 +1,11 @@
 package com.flexia.service.impl;
 
 import com.flexia.entity.Blog;
-import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
+import com.flexia.mapper.BlogTagMapper;
 import com.flexia.service.BlogService;
+import com.flexia.service.TagService;
 import com.flexia.service.TypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogMapper blogMapper;
+
+    @Autowired
+    private TagService tagService;
 
     @Autowired
     private TypeService typeService;
@@ -121,9 +125,10 @@ public class BlogServiceImpl implements BlogService {
      */
     private void setBlogProperties(List<Blog> blogs) {
         for (Blog blog : blogs) {
-            // 获取分类
-            Type type = typeService.getTypeById(blog.getTypeId());
-            blog.setType(type);
+            // 分类
+            blog.setType(typeService.getTypeById(blog.getTypeId()));
+            // 标签
+            blog.setTags(tagService.getTagsByBlogId(blog.getBlogId()));
         }
     }
 }

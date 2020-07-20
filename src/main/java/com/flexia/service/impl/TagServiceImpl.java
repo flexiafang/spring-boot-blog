@@ -1,7 +1,9 @@
 package com.flexia.service.impl;
 
+import com.flexia.entity.BlogTag;
 import com.flexia.entity.Tag;
 import com.flexia.exception.NotFoundException;
+import com.flexia.mapper.BlogTagMapper;
 import com.flexia.mapper.TagMapper;
 import com.flexia.service.TagService;
 import org.slf4j.Logger;
@@ -24,6 +26,10 @@ public class TagServiceImpl implements TagService {
 
     @Autowired
     private TagMapper tagMapper;
+
+    @Autowired
+    private BlogTagMapper blogTagMapper;
+
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -108,5 +114,37 @@ public class TagServiceImpl implements TagService {
         }
 
         return count;
+    }
+
+    @Override
+    public List<Tag> getTagsByBlogId(Integer blogId) {
+        List<BlogTag> blogTags = this.queryBlogTag(blogId);
+        List<Tag> tags = new ArrayList<>();
+        for (BlogTag blogTag : blogTags) {
+            tags.add(this.getTagById(blogTag.getTagId()));
+        }
+        return tags;
+    }
+
+    @Override
+    public String getTagIds(Integer blogId) {
+        List<BlogTag> blogTags = queryBlogTag(blogId);
+        StringBuilder tagIds = new StringBuilder();
+        boolean sign = false;
+        for (BlogTag blogTag : blogTags) {
+            if (sign) {
+                tagIds.append(",");
+            } else {
+                sign = true;
+            }
+            tagIds.append(blogTag.getTagId());
+        }
+        return tagIds.toString();
+    }
+
+    private List<BlogTag> queryBlogTag(Integer blogId) {
+        Example example = new Example(BlogTag.class);
+        example.createCriteria().andEqualTo("blogId", blogId);
+        return blogTagMapper.selectByExample(example);
     }
 }

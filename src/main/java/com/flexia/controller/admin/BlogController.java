@@ -97,9 +97,8 @@ public class BlogController {
     @GetMapping("/blogs/{id}/update")
     public String edit(@PathVariable Integer id, Model model) {
         setTypeAndTag(model);
-        Blog blog = blogService.getBlogById(id);
-        model.addAttribute("blog", blog);
-        model.addAttribute("tagIds", convertTagsToIds(blog.getTags()));
+        model.addAttribute("blog", blogService.getBlogById(id));
+        model.addAttribute("tagIds", tagService.getTagIds(id));
         return "admin/blog-input";
     }
 
@@ -111,30 +110,6 @@ public class BlogController {
     private void setTypeAndTag(Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("tags", tagService.listTag());
-    }
-
-    /**
-     * 获得标签id列表的字符串值
-     *
-     * @param tags
-     * @return
-     */
-    private String convertTagsToIds(List<Tag> tags) {
-        if (tags == null || tags.isEmpty()) {
-            return "";
-        }
-
-        StringBuilder ids = new StringBuilder();
-        boolean sign = false;
-        for (Tag tag : tags) {
-            if (sign) {
-                ids.append(",");
-            } else {
-                sign = true;
-            }
-            ids.append(tag.getTagId());
-        }
-        return ids.toString();
     }
 
     /**

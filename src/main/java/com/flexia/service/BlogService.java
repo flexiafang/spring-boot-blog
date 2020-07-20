@@ -1,7 +1,7 @@
 package com.flexia.service;
 
 import com.flexia.entity.Blog;
-import com.flexia.entity.Type;
+import com.flexia.entity.Tag;
 
 import java.util.List;
 

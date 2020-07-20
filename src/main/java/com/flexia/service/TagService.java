@@ -24,4 +24,8 @@ public interface TagService {
     Tag updateTag(Tag tag);
 
     int deleteTag(Integer id);
+
+    List<Tag> getTagsByBlogId(Integer blogId);
+
+    String getTagIds(Integer blogId);
 }

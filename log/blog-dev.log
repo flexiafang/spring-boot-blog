@@ -6404,3 +6404,306 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2020-07-20 20:57:58.402 DEBUG 6464 --- [http-nio-8080-exec-9] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
 2020-07-20 20:57:58.403 DEBUG 6464 --- [http-nio-8080-exec-9] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 10(Integer)
 2020-07-20 20:57:58.403 DEBUG 6464 --- [http-nio-8080-exec-9] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:27:59.222  INFO 6464 --- [Thread-173] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-20 21:27:59.223  INFO 6464 --- [Thread-173] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-07-20 21:27:59.232  INFO 6464 --- [Thread-173] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-07-20 21:27:59.303  INFO 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 6464 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-20 21:27:59.303 DEBUG 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-20 21:27:59.303  INFO 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-20 21:27:59.538  WARN 6464 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-20 21:27:59.586  INFO 6464 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-20 21:27:59.587  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:27:59.587  INFO 6464 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-20 21:27:59.608  INFO 6464 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:27:59.608  INFO 6464 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 303 ms
+2020-07-20 21:27:59.699  WARN 6464 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogController': Unsatisfied dependency expressed through field 'blogService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogServiceImpl': Unsatisfied dependency expressed through field 'tagService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.flexia.service.TagService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-07-20 21:27:59.699  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-07-20 21:27:59.704  INFO 6464 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-20 21:27:59.842 ERROR 6464 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field tagService in com.flexia.service.impl.BlogServiceImpl required a bean of type 'com.flexia.service.TagService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.flexia.service.TagService' in your configuration.
+
+2020-07-20 21:37:46.255  INFO 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 6464 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-20 21:37:46.255 DEBUG 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-20 21:37:46.255  INFO 6464 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-20 21:37:46.454  WARN 6464 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-20 21:37:46.507  INFO 6464 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-20 21:37:46.508  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:37:46.508  INFO 6464 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-20 21:37:46.529  INFO 6464 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:37:46.529  INFO 6464 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 271 ms
+2020-07-20 21:37:46.612  WARN 6464 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogController': Unsatisfied dependency expressed through field 'blogService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogServiceImpl': Unsatisfied dependency expressed through field 'tagService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.flexia.service.TagService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-07-20 21:37:46.613  INFO 6464 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-07-20 21:37:46.617  INFO 6464 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-20 21:37:46.669 ERROR 6464 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field tagService in com.flexia.service.impl.BlogServiceImpl required a bean of type 'com.flexia.service.TagService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.flexia.service.TagService' in your configuration.
+
+2020-07-20 21:37:48.956  INFO 11460 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 11460 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-20 21:37:48.958 DEBUG 11460 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-20 21:37:48.958  INFO 11460 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-20 21:37:49.046  INFO 11460 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-20 21:37:49.047  INFO 11460 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-20 21:37:49.519  WARN 11460 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-20 21:37:49.769  INFO 11460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-20 21:37:49.775  INFO 11460 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:37:49.776  INFO 11460 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-20 21:37:49.829  INFO 11460 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:37:49.829  INFO 11460 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 782 ms
+2020-07-20 21:37:50.221  INFO 11460 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-20 21:37:50.264  INFO 11460 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 21:37:50.391  INFO 11460 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 21:37:50.416  INFO 11460 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-20 21:37:50.425  INFO 11460 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 1.849 seconds (JVM running for 2.425)
+2020-07-20 21:37:55.147  INFO 11460 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-20 21:37:55.148  INFO 11460 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-20 21:37:55.152  INFO 11460 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-07-20 21:37:59.187  INFO 11460 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 21:37:59.386  INFO 11460 --- [http-nio-8080-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 21:37:59.391 DEBUG 11460 --- [http-nio-8080-exec-7] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-20 21:37:59.407 DEBUG 11460 --- [http-nio-8080-exec-7] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-07-20 21:37:59.420 DEBUG 11460 --- [http-nio-8080-exec-7] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 1
+2020-07-20 21:38:01.160 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : ==>  Preparing: SELECT count(0) FROM blog
+2020-07-20 21:38:01.160 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : ==> Parameters: 
+2020-07-20 21:38:01.162 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : <==      Total: 1
+2020-07-20 21:38:01.163 DEBUG 11460 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog LIMIT ?
+2020-07-20 21:38:01.164 DEBUG 11460 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : ==> Parameters: 10(Integer)
+2020-07-20 21:38:01.172 DEBUG 11460 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : <==      Total: 10
+2020-07-20 21:38:01.175 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:38:01.175 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:38:01.176 DEBUG 11460 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:38:01.182 ERROR 11460 --- [http-nio-8080-exec-1] c.f.handler.ControllerExceptionHandler   : Request URL: http://localhost:8080/admin/blogs, Exception: 当前实体类不包含名为blogId的属性!
+2020-07-20 21:38:01.184  WARN 11460 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [tk.mybatis.mapper.MapperException: 当前实体类不包含名为blogId的属性!]
+2020-07-20 21:39:47.301  INFO 7264 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 7264 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-20 21:39:47.303 DEBUG 7264 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-20 21:39:47.303  INFO 7264 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-20 21:39:47.335  INFO 7264 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-20 21:39:47.336  INFO 7264 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-20 21:39:47.839  WARN 7264 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-20 21:39:48.139  INFO 7264 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-20 21:39:48.144  INFO 7264 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:39:48.145  INFO 7264 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-20 21:39:48.201  INFO 7264 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:39:48.201  INFO 7264 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 865 ms
+2020-07-20 21:39:48.630  INFO 7264 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-20 21:39:48.675  INFO 7264 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 21:39:48.802  INFO 7264 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 21:39:48.830  INFO 7264 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-20 21:39:48.840  INFO 7264 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 1.899 seconds (JVM running for 2.646)
+2020-07-20 21:39:52.905  INFO 7264 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-20 21:39:52.906  INFO 7264 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-20 21:39:52.910  INFO 7264 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-07-20 21:40:01.419  INFO 7264 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 21:40:01.642  INFO 7264 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 21:40:01.648 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-20 21:40:01.664 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), 6590f73ecdf351c38de00befd2ecf17b(String)
+2020-07-20 21:40:01.676 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 0
+2020-07-20 21:40:06.259 DEBUG 7264 --- [http-nio-8080-exec-9] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-20 21:40:06.260 DEBUG 7264 --- [http-nio-8080-exec-9] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-07-20 21:40:06.262 DEBUG 7264 --- [http-nio-8080-exec-9] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 1
+2020-07-20 21:40:13.510 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.mapper.BlogMapper.selectAll_COUNT    : ==>  Preparing: SELECT count(0) FROM blog
+2020-07-20 21:40:13.511 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.mapper.BlogMapper.selectAll_COUNT    : ==> Parameters: 
+2020-07-20 21:40:13.517 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.mapper.BlogMapper.selectAll_COUNT    : <==      Total: 1
+2020-07-20 21:40:13.522 DEBUG 7264 --- [http-nio-8080-exec-6] com.flexia.mapper.BlogMapper.selectAll   : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog LIMIT ?
+2020-07-20 21:40:13.524 DEBUG 7264 --- [http-nio-8080-exec-6] com.flexia.mapper.BlogMapper.selectAll   : ==> Parameters: 10(Integer)
+2020-07-20 21:40:13.600 DEBUG 7264 --- [http-nio-8080-exec-6] com.flexia.mapper.BlogMapper.selectAll   : <==      Total: 10
+2020-07-20 21:40:13.618 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:40:13.619 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:40:13.623 DEBUG 7264 --- [http-nio-8080-exec-6] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:41:53.791  WARN 7264 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m52s47ms629µs300ns).
+2020-07-20 21:41:53.795 ERROR 7264 --- [http-nio-8080-exec-6] c.f.handler.ControllerExceptionHandler   : Request URL: http://localhost:8080/admin/blogs, Exception: 当前实体类不包含名为blogId的属性!
+2020-07-20 21:41:53.797  WARN 7264 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [tk.mybatis.mapper.MapperException: 当前实体类不包含名为blogId的属性!]
+2020-07-20 21:41:53.949  INFO 7264 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-20 21:41:53.949  INFO 7264 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-07-20 21:41:53.958  INFO 7264 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-07-20 21:43:31.011  INFO 7304 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 7304 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-20 21:43:31.013 DEBUG 7304 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-20 21:43:31.013  INFO 7304 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-20 21:43:31.043  INFO 7304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-20 21:43:31.043  INFO 7304 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-20 21:43:31.485  WARN 7304 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-20 21:43:31.735  INFO 7304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-20 21:43:31.741  INFO 7304 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-20 21:43:31.741  INFO 7304 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-20 21:43:31.795  INFO 7304 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-20 21:43:31.795  INFO 7304 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2020-07-20 21:43:32.172  INFO 7304 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-20 21:43:32.213  INFO 7304 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-20 21:43:32.337  INFO 7304 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-20 21:43:32.369  INFO 7304 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-20 21:43:32.378  INFO 7304 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 1.649 seconds (JVM running for 2.194)
+2020-07-20 21:43:34.876  INFO 7304 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-20 21:43:34.877  INFO 7304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-20 21:43:34.880  INFO 7304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2020-07-20 21:43:39.704  INFO 7304 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-20 21:43:39.905  INFO 7304 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-20 21:43:39.911 DEBUG 7304 --- [http-nio-8080-exec-2] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-20 21:43:39.927 DEBUG 7304 --- [http-nio-8080-exec-2] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-07-20 21:43:39.940 DEBUG 7304 --- [http-nio-8080-exec-2] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 1
+2020-07-20 21:43:41.473 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : ==>  Preparing: SELECT count(0) FROM blog
+2020-07-20 21:43:41.473 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : ==> Parameters: 
+2020-07-20 21:43:41.475 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.BlogMapper.selectAll_COUNT    : <==      Total: 1
+2020-07-20 21:43:41.476 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog LIMIT ?
+2020-07-20 21:43:41.476 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : ==> Parameters: 10(Integer)
+2020-07-20 21:43:41.484 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.BlogMapper.selectAll   : <==      Total: 10
+2020-07-20 21:43:41.487 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.488 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:41.489 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.510 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.511 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 8(Integer)
+2020-07-20 21:43:41.512 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.513 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.513 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 1(Integer)
+2020-07-20 21:43:41.514 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.515 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.515 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:41.515 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.516 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.516 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 15(Integer)
+2020-07-20 21:43:41.517 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.517 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.518 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 22(Integer)
+2020-07-20 21:43:41.518 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.518 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.519 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:41.519 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.520 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.520 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 16(Integer)
+2020-07-20 21:43:41.521 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.521 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.521 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 21(Integer)
+2020-07-20 21:43:41.522 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.522 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.522 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:41.523 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.523 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.523 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 17(Integer)
+2020-07-20 21:43:41.524 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.524 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.525 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 21(Integer)
+2020-07-20 21:43:41.525 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.526 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.526 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:41.527 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.529 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.529 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 18(Integer)
+2020-07-20 21:43:41.530 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.531 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.531 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 22(Integer)
+2020-07-20 21:43:41.531 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.532 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.532 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Integer)
+2020-07-20 21:43:41.533 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.533 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.534 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 19(Integer)
+2020-07-20 21:43:41.534 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.535 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.535 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 22(Integer)
+2020-07-20 21:43:41.535 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.536 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.536 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 10(Integer)
+2020-07-20 21:43:41.536 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.537 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.537 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 21(Integer)
+2020-07-20 21:43:41.538 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.538 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.538 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 24(Integer)
+2020-07-20 21:43:41.539 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.539 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.539 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Integer)
+2020-07-20 21:43:41.540 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.540 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.541 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 22(Integer)
+2020-07-20 21:43:41.541 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:41.542 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.542 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 24(Integer)
+2020-07-20 21:43:41.542 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.543 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.543 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 7(Integer)
+2020-07-20 21:43:41.543 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.544 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.544 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 23(Integer)
+2020-07-20 21:43:41.545 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 7
+2020-07-20 21:43:41.545 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.545 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 1(Integer)
+2020-07-20 21:43:41.546 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.546 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.546 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 2(Integer)
+2020-07-20 21:43:41.547 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.547 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.547 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 20(Integer)
+2020-07-20 21:43:41.548 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.548 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.548 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 21(Integer)
+2020-07-20 21:43:41.549 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.549 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.549 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 22(Integer)
+2020-07-20 21:43:41.550 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.550 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.550 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 23(Integer)
+2020-07-20 21:43:41.551 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.551 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:41.551 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 24(Integer)
+2020-07-20 21:43:41.552 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:41.552 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:41.552 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 10(Integer)
+2020-07-20 21:43:41.553 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:41.553 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:41.554 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 26(Integer)
+2020-07-20 21:43:41.554 DEBUG 7304 --- [http-nio-8080-exec-1] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 0
+2020-07-20 21:43:41.555 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-20 21:43:41.556 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-20 21:43:41.557 DEBUG 7304 --- [http-nio-8080-exec-1] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-20 21:43:44.038 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-20 21:43:44.039 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-20 21:43:44.039 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-20 21:43:44.040 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TagMapper.selectAll    : ==>  Preparing: SELECT tag_id,name FROM tag
+2020-07-20 21:43:44.040 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TagMapper.selectAll    : ==> Parameters: 
+2020-07-20 21:43:44.041 DEBUG 7304 --- [http-nio-8080-exec-5] com.flexia.mapper.TagMapper.selectAll    : <==      Total: 7
+2020-07-20 21:43:44.042 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogMapper.selectByPrimaryKey      : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog WHERE blog_id = ?
+2020-07-20 21:43:44.042 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogMapper.selectByPrimaryKey      : ==> Parameters: 8(Integer)
+2020-07-20 21:43:44.043 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:44.043 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-20 21:43:44.043 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Integer)
+2020-07-20 21:43:44.044 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-20 21:43:44.046 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:44.046 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 8(Integer)
+2020-07-20 21:43:44.047 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
+2020-07-20 21:43:44.048 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.mapper.TagMapper.selectByPrimaryKey  : ==>  Preparing: SELECT tag_id,name FROM tag WHERE tag_id = ?
+2020-07-20 21:43:44.048 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.mapper.TagMapper.selectByPrimaryKey  : ==> Parameters: 1(Integer)
+2020-07-20 21:43:44.049 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.mapper.TagMapper.selectByPrimaryKey  : <==      Total: 1
+2020-07-20 21:43:44.050 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : ==>  Preparing: SELECT blog_tag_id,blog_id,tag_id FROM blog_tag WHERE ( ( blog_id = ? ) )
+2020-07-20 21:43:44.050 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : ==> Parameters: 8(Integer)
+2020-07-20 21:43:44.051 DEBUG 7304 --- [http-nio-8080-exec-5] c.f.m.BlogTagMapper.selectByExample      : <==      Total: 1
