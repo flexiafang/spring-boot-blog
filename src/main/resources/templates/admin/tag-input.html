@@ -45,7 +45,7 @@
 </div>
 
 <!--中间内容-->
-<div class="m-container m-padded-tb-massive">
+<div id="page-content" class="m-container m-padded-tb-massive">
     <div class="ui container">
         <form action="#" method="post" th:object="${tag}" class="ui form"
               th:action="*{tagId}==null ? @{/admin/tags/input} : @{/admin/tags/update}">

@@ -45,7 +45,7 @@
 </div>
 
 <!--中间内容-->
-<div class="m-container m-padded-tb-massive">
+<div id="page-content" class="m-container m-padded-tb-massive">
     <div class="ui container">
         <form action="#" method="post" th:object="${type}" class="ui form"
               th:action="*{typeId}==null ? @{/admin/types/input} : @{/admin/types/update}">

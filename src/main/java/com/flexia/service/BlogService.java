@@ -12,15 +12,15 @@ import java.util.List;
  */
 public interface BlogService {
 
-    Blog getBlogById(Long blogId);
+    Blog getBlogById(Integer blogId);
 
     Blog saveBlog(Blog blog);
 
     Blog updateBlog(Blog blog);
 
-    int deleteBlog(Long id);
+    int deleteBlog(Integer id);
 
     List<Blog> listBlog();
 
-    List<Blog> getBlogByKeyWords(String title, Long typeId, Boolean recommend);
+    List<Blog> getBlogByKeyWords(String title, Integer typeId, Boolean recommend);
 }

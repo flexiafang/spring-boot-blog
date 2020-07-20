@@ -13,7 +13,7 @@ public interface TagService {
 
     Tag saveTag(Tag tag);
 
-    Tag getTagById(Long id);
+    Tag getTagById(Integer id);
 
     List<Tag> listTag();
 
@@ -23,5 +23,5 @@ public interface TagService {
 
     Tag updateTag(Tag tag);
 
-    int deleteTag(Long id);
+    int deleteTag(Integer id);
 }

@@ -13,7 +13,7 @@ public interface TypeService {
 
     Type saveType(Type type);
 
-    Type getTypeById(Long id);
+    Type getTypeById(Integer id);
 
     List<Type> listType();
 
@@ -21,5 +21,5 @@ public interface TypeService {
 
     Type updateType(Type type);
 
-    int deleteType(Long id);
+    int deleteType(Integer id);
 }

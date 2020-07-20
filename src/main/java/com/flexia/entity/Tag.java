@@ -23,7 +23,7 @@ public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tagId;
+    private Integer tagId;
 
     @NotBlank(message = "标签不能为空")
     private String name;

@@ -44,7 +44,7 @@
 </div>
 
 <!--中间内容-->
-<div class="m-container m-padded-tb-big">
+<div id="page-content" class="m-container m-padded-tb-big">
     <div class="ui container">
         <form method="post" class="ui secondary segment form">
             <input type="hidden" name="page" value="">
@@ -58,8 +58,8 @@
                         <i class="dropdown icon"></i>
                         <div class="default text">分类</div>
                         <div class="menu">
-                            <div class="item" data-value="1"
-                                 th:each="type : ${types}" th:data-value="${type.typeId}" th:text="${type.name}">
+                            <div th:each="type : ${types}" class="item" data-value="1"
+                                 th:data-value="${type.typeId}" th:text="${type.name}">
                                 错误日志
                             </div>
                             <!--/*-->
@@ -102,7 +102,7 @@
                     <td th:text="${blog.type.name}">认知升级</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">是</td>
                     <td th:text="${blog.publish} ? '已发布' : '草稿'">已发布</td>
-                    <td th:text="${blog.updateTime}">2020-07-02 09:30</td>
+                    <td th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd HH:mm')}">2020-07-02 09:30</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/update(id=${blog.blogId})}"
                            class="ui teal basic button">编辑
@@ -132,6 +132,12 @@
                 </tr>
                 </tfoot>
             </table>
+
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜，操作成功！</p>
+            </div>
         </div>
     </div>
 </div>
@@ -187,6 +193,11 @@
         on: 'hover'
     })
 
+    // 消息提示关闭初始化
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').transition('fade');
+    });
+
     // 点击翻页按钮触发
     function page(obj) {
         $("[name='page']").val($(obj).data("page"));
@@ -194,6 +205,7 @@
     }
 
     $("#search-btn").click(function () {
+        $("[name='page']").val(0);
         loadData();
     });
 

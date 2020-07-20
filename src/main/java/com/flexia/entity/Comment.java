@@ -24,14 +24,14 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String nickname;
     private String email;
     private String content;
     private String avatar;
     private Date createTime;
-    private Long blogId;
-    private Long parentCommentId;
+    private Integer blogId;
+    private Integer parentCommentId;
     @Transient
     private List<Comment> replyComments;
 }

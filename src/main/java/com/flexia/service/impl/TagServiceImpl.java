@@ -33,7 +33,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag getTagById(Long id) {
+    public Tag getTagById(Integer id) {
         return tagMapper.selectByPrimaryKey(id);
     }
 
@@ -45,9 +45,9 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<Tag> listTag(String tagIds) {
         List<Tag> tags = new ArrayList<>();
-        List<Long> ids = convertTagIdsToList(tagIds);
+        List<Integer> ids = convertTagIdsToList(tagIds);
 
-        for (Long id : ids) {
+        for (Integer id : ids) {
             Tag tag = tagMapper.selectByPrimaryKey(id);
             tags.add(tag);
         }
@@ -61,13 +61,13 @@ public class TagServiceImpl implements TagService {
      * @param tagIds
      * @return
      */
-    private List<Long> convertTagIdsToList(String tagIds) {
-        List<Long> list = new ArrayList<>();
+    private List<Integer> convertTagIdsToList(String tagIds) {
+        List<Integer> list = new ArrayList<>();
 
         if (!"".equals(tagIds) && tagIds != null) {
             String[] ids = tagIds.split(",");
             for (String id : ids) {
-                list.add(Long.valueOf(id));
+                list.add(Integer.valueOf(id));
             }
         }
 
@@ -97,7 +97,7 @@ public class TagServiceImpl implements TagService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int deleteTag(Long id) {
+    public int deleteTag(Integer id) {
         int count = 0;
 
         try {

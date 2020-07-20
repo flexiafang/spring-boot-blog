@@ -95,7 +95,7 @@ public class TypeController {
      * @return
      */
     @GetMapping("/types/{id}/update")
-    public String edit(@PathVariable Long id, Model model) {
+    public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("type", typeService.getTypeById(id));
         return "admin/type-input";
     }
@@ -138,7 +138,7 @@ public class TypeController {
      * @return
      */
     @GetMapping("/types/{id}/delete")
-    public String deleteType(@PathVariable Long id, RedirectAttributes attributes) {
+    public String deleteType(@PathVariable Integer id, RedirectAttributes attributes) {
         int count = typeService.deleteType(id);
 
         if (count == 1) {

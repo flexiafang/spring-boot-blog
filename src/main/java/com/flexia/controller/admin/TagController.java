@@ -95,7 +95,7 @@ public class TagController {
      * @return
      */
     @GetMapping("/tags/{id}/update")
-    public String edit(@PathVariable Long id, Model model) {
+    public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("tag", tagService.getTagById(id));
         return "admin/tag-input";
     }
@@ -138,7 +138,7 @@ public class TagController {
      * @return
      */
     @GetMapping("/tags/{id}/delete")
-    public String deleteTag(@PathVariable Long id, RedirectAttributes attributes) {
+    public String deleteTag(@PathVariable Integer id, RedirectAttributes attributes) {
         int count = tagService.deleteTag(id);
 
         if (count == 1) {

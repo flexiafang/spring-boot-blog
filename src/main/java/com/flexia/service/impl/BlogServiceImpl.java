@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -31,8 +32,10 @@ public class BlogServiceImpl implements BlogService {
     private TypeService typeService;
 
     @Override
-    public Blog getBlogById(Long blogId) {
-        return blogMapper.selectByPrimaryKey(blogId);
+    public Blog getBlogById(Integer blogId) {
+        Blog blog = blogMapper.selectByPrimaryKey(blogId);
+        setBlogProperties(Collections.singletonList(blog));
+        return blog;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -59,7 +62,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int deleteBlog(Long id) {
+    public int deleteBlog(Integer id) {
         int count = 0;
         try {
             count = blogMapper.deleteByPrimaryKey(id);
@@ -91,16 +94,16 @@ public class BlogServiceImpl implements BlogService {
      * @return
      */
     @Override
-    public List<Blog> getBlogByKeyWords(String title, Long typeId, Boolean recommend) {
+    public List<Blog> getBlogByKeyWords(String title, Integer typeId, Boolean recommend) {
         // 设置查询条件
         Example example = new Example(Blog.class);
         Example.Criteria criteria = example.createCriteria();
 
-        if (!"".equals(title) && title != null) {
-            criteria.andLike("title", title);
+        if (title != null) {
+            criteria.andLike("title", "%" + title + "%");
         }
         if (typeId != null) {
-            criteria.andEqualTo("type_id", typeId);
+            criteria.andEqualTo("typeId", typeId);
         }
         if (recommend) {
             criteria.andEqualTo("recommend", true);

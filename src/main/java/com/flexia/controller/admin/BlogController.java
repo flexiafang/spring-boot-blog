@@ -1,6 +1,7 @@
 package com.flexia.controller.admin;
 
 import com.flexia.entity.Blog;
+import com.flexia.entity.Tag;
 import com.flexia.entity.Type;
 import com.flexia.entity.User;
 import com.flexia.service.BlogService;
@@ -12,10 +13,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -69,9 +67,9 @@ public class BlogController {
      */
     @PostMapping("/blogs/search")
     public String search(@RequestParam(required = false, defaultValue = "1") String page,
-                         Model model, String title, Long typeId, Boolean recommend) {
-        PageHelper.startPage(Integer.parseInt(page), 8);
-        Page<Blog> blogPage = (Page<Blog>) blogService.getBlogByKeyWords("".equalsIgnoreCase(title) ? null : title, typeId, recommend);
+                         Model model, String title, Integer typeId, Boolean recommend) {
+        PageHelper.startPage(Integer.parseInt(page), 10);
+        Page<Blog> blogPage = (Page<Blog>) blogService.getBlogByKeyWords("".equals(title) ? null : title, typeId, recommend);
         PageInfo<Blog> pageInfo = new PageInfo<>(blogPage);
         model.addAttribute("pageInfo", pageInfo);
         return "admin/blogs :: blogList";
@@ -85,13 +83,69 @@ public class BlogController {
      */
     @GetMapping("/blogs/input")
     public String input(Model model) {
-        model.addAttribute("types", typeService.listType());
-        model.addAttribute("tags", tagService.listTag());
+        setTypeAndTag(model);
         model.addAttribute("blog", new Blog());
         return "admin/blog-input";
     }
 
+    /**
+     * 跳转到修改博客页面
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/blogs/{id}/update")
+    public String edit(@PathVariable Integer id, Model model) {
+        setTypeAndTag(model);
+        Blog blog = blogService.getBlogById(id);
+        model.addAttribute("blog", blog);
+        model.addAttribute("tagIds", convertTagsToIds(blog.getTags()));
+        return "admin/blog-input";
+    }
 
+    /**
+     * 设置跳转页面中的分类和标签值
+     *
+     * @param model
+     */
+    private void setTypeAndTag(Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("tags", tagService.listTag());
+    }
+
+    /**
+     * 获得标签id列表的字符串值
+     *
+     * @param tags
+     * @return
+     */
+    private String convertTagsToIds(List<Tag> tags) {
+        if (tags == null || tags.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder ids = new StringBuilder();
+        boolean sign = false;
+        for (Tag tag : tags) {
+            if (sign) {
+                ids.append(",");
+            } else {
+                sign = true;
+            }
+            ids.append(tag.getTagId());
+        }
+        return ids.toString();
+    }
+
+    /**
+     * 发布（或修改）博客
+     *
+     * @param blog
+     * @param tagIds
+     * @param session
+     * @param attributes
+     * @return
+     */
     @PostMapping("/blogs/post")
     public String post(Blog blog, String tagIds, HttpSession session, RedirectAttributes attributes) {
         // 设置博客的相关信息
@@ -102,9 +156,9 @@ public class BlogController {
         Blog b = blogService.saveBlog(blog);
 
         if (b == null) {
-            attributes.addFlashAttribute("message", "新增失败");
+            attributes.addFlashAttribute("message", "操作失败");
         } else {
-            attributes.addFlashAttribute("message", "新增成功");
+            attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/admin/blogs";
     }

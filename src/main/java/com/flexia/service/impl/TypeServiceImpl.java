@@ -32,7 +32,7 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public Type getTypeById(Long id) {
+    public Type getTypeById(Integer id) {
         return typeMapper.selectByPrimaryKey(id);
     }
 
@@ -62,7 +62,7 @@ public class TypeServiceImpl implements TypeService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int deleteType(Long id) {
+    public int deleteType(Integer id) {
         int count = 0;
         try {
             count = typeMapper.deleteByPrimaryKey(id);

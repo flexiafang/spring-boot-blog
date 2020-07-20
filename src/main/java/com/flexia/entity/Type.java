@@ -20,7 +20,7 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long typeId;
+    private Integer typeId;
 
     @NotBlank(message = "分类名称不能为空")
     private String name;

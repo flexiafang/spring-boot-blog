@@ -24,7 +24,7 @@ public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long blogId;
+    private Integer blogId;
 
     private String title;
     private String content;
@@ -42,8 +42,8 @@ public class Blog {
     private Date createTime;
     private Date updateTime;
 
-    private Long typeId;
-    private Long userId;
+    private Integer typeId;
+    private Integer userId;
 
     @Transient
     private Type type;

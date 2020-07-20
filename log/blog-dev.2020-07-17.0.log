@@ -1,0 +1,126 @@
+2020-07-17 16:57:03.598  INFO 14248 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Starting SpringBootBlogApplication on SmallFun with PID 14248 (G:\Project\spring-boot-blog\target\classes started by Administrator in G:\Project\spring-boot-blog)
+2020-07-17 16:57:03.648 DEBUG 14248 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+2020-07-17 16:57:03.648  INFO 14248 --- [restartedMain] com.flexia.SpringBootBlogApplication     : The following profiles are active: dev
+2020-07-17 16:57:03.668  INFO 14248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-17 16:57:03.728  INFO 14248 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-17 16:57:04.908  WARN 14248 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.flexia]' package. Please check your configuration.
+2020-07-17 16:57:05.388  INFO 14248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-07-17 16:57:05.398  INFO 14248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-17 16:57:05.398  INFO 14248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-17 16:57:05.518  INFO 14248 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-17 16:57:05.518  INFO 14248 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1790 ms
+2020-07-17 16:57:06.008  INFO 14248 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-17 16:57:06.068  INFO 14248 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-07-17 16:57:06.688  INFO 14248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-17 16:57:06.708  INFO 14248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-17 16:57:06.738  INFO 14248 --- [restartedMain] com.flexia.SpringBootBlogApplication     : Started SpringBootBlogApplication in 3.964 seconds (JVM running for 11.302)
+2020-07-17 17:05:49.362  INFO 14248 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-17 17:05:49.362  INFO 14248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-17 17:05:49.384  INFO 14248 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2020-07-17 17:05:58.738  INFO 14248 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-17 17:05:59.552  INFO 14248 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-17 17:05:59.560 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-17 17:05:59.586 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-07-17 17:05:59.671 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 1
+2020-07-17 17:06:11.803 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.mapper.BlogMapper.selectAll_COUNT    : ==>  Preparing: SELECT count(0) FROM blog
+2020-07-17 17:06:11.803 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.mapper.BlogMapper.selectAll_COUNT    : ==> Parameters: 
+2020-07-17 17:06:11.820 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.mapper.BlogMapper.selectAll_COUNT    : <==      Total: 1
+2020-07-17 17:06:11.821 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.BlogMapper.selectAll   : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog LIMIT ?
+2020-07-17 17:06:11.821 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.BlogMapper.selectAll   : ==> Parameters: 10(Integer)
+2020-07-17 17:06:11.832 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.BlogMapper.selectAll   : <==      Total: 9
+2020-07-17 17:06:11.835 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.836 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 17:06:11.841 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.842 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.842 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 17:06:11.843 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.843 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.843 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 17:06:11.844 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.844 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.845 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 17:06:11.845 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.846 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.846 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 17:06:11.846 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.847 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.847 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Long)
+2020-07-17 17:06:11.847 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.848 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.848 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 10(Long)
+2020-07-17 17:06:11.848 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.849 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.849 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Long)
+2020-07-17 17:06:11.849 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.850 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 17:06:11.850 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 7(Long)
+2020-07-17 17:06:11.851 DEBUG 14248 --- [http-nio-8080-exec-10] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 17:06:11.853 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 17:06:11.853 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 17:06:11.854 DEBUG 14248 --- [http-nio-8080-exec-10] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 17:06:13.861 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 17:06:13.862 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 17:06:13.863 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 17:06:13.866 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TagMapper.selectAll    : ==>  Preparing: SELECT tag_id,name FROM tag
+2020-07-17 17:06:13.866 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TagMapper.selectAll    : ==> Parameters: 
+2020-07-17 17:06:13.871 DEBUG 14248 --- [http-nio-8080-exec-9] com.flexia.mapper.TagMapper.selectAll    : <==      Total: 7
+2020-07-17 17:06:51.049 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 17:06:51.050 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 17:06:51.051 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 17:06:51.052 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TagMapper.selectAll    : ==>  Preparing: SELECT tag_id,name FROM tag
+2020-07-17 17:06:51.053 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TagMapper.selectAll    : ==> Parameters: 
+2020-07-17 17:06:51.054 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TagMapper.selectAll    : <==      Total: 7
+2020-07-17 17:07:07.130 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 17:07:07.130 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 17:07:07.131 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 17:07:07.132 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TagMapper.selectAll    : ==>  Preparing: SELECT tag_id,name FROM tag
+2020-07-17 17:07:07.132 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TagMapper.selectAll    : ==> Parameters: 
+2020-07-17 17:07:07.133 DEBUG 14248 --- [http-nio-8080-exec-6] com.flexia.mapper.TagMapper.selectAll    : <==      Total: 7
+2020-07-17 18:28:57.994  WARN 14248 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m28s279ms344µs200ns).
+2020-07-17 19:15:47.668  WARN 14248 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m19s737ms137µs200ns).
+2020-07-17 19:16:55.361 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : ==>  Preparing: select * from user where username = ? and password = ?
+2020-07-17 19:16:55.362 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : ==> Parameters: hustffx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-07-17 19:16:55.363 DEBUG 14248 --- [http-nio-8080-exec-4] c.f.m.U.findByUsernameAndPassWord        : <==      Total: 1
+2020-07-17 19:16:57.661 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.mapper.BlogMapper.selectAll_COUNT    : ==>  Preparing: SELECT count(0) FROM blog
+2020-07-17 19:16:57.661 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.mapper.BlogMapper.selectAll_COUNT    : ==> Parameters: 
+2020-07-17 19:16:57.663 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.mapper.BlogMapper.selectAll_COUNT    : <==      Total: 1
+2020-07-17 19:16:57.663 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.BlogMapper.selectAll   : ==>  Preparing: SELECT blog_id,title,content,first_picture,flag,description,views,appreciation,share_statement,comment,publish,recommend,create_time,update_time,type_id,user_id FROM blog LIMIT ?
+2020-07-17 19:16:57.663 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.BlogMapper.selectAll   : ==> Parameters: 10(Integer)
+2020-07-17 19:16:57.670 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.BlogMapper.selectAll   : <==      Total: 9
+2020-07-17 19:16:57.670 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.670 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 19:16:57.671 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.671 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.671 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 19:16:57.672 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.672 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.672 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 19:16:57.673 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.673 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.673 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 19:16:57.674 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.674 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.674 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 6(Long)
+2020-07-17 19:16:57.675 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.675 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.676 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Long)
+2020-07-17 19:16:57.676 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.676 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.677 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 10(Long)
+2020-07-17 19:16:57.677 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.677 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.678 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 4(Long)
+2020-07-17 19:16:57.678 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.678 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==>  Preparing: SELECT type_id,name FROM type WHERE type_id = ?
+2020-07-17 19:16:57.678 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : ==> Parameters: 7(Long)
+2020-07-17 19:16:57.679 DEBUG 14248 --- [http-nio-8080-exec-7] c.f.m.TypeMapper.selectByPrimaryKey      : <==      Total: 1
+2020-07-17 19:16:57.679 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 19:16:57.679 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 19:16:57.680 DEBUG 14248 --- [http-nio-8080-exec-7] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 19:16:59.251 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TypeMapper.selectAll   : ==>  Preparing: SELECT type_id,name FROM type
+2020-07-17 19:16:59.252 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TypeMapper.selectAll   : ==> Parameters: 
+2020-07-17 19:16:59.252 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TypeMapper.selectAll   : <==      Total: 6
+2020-07-17 19:16:59.253 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TagMapper.selectAll    : ==>  Preparing: SELECT tag_id,name FROM tag
+2020-07-17 19:16:59.253 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TagMapper.selectAll    : ==> Parameters: 
+2020-07-17 19:16:59.253 DEBUG 14248 --- [http-nio-8080-exec-4] com.flexia.mapper.TagMapper.selectAll    : <==      Total: 7
+2020-07-17 19:53:32.659  WARN 14248 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s16ms691µs900ns).
