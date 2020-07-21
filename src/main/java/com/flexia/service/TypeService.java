@@ -17,6 +17,8 @@ public interface TypeService {
 
     List<Type> listType();
 
+    List<Type> listType(Integer size);
+
     Type getTypeByName(String name);
 
     Type updateType(Type type);

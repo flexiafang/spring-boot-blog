@@ -16,4 +16,6 @@ public interface UserService {
      * @return
      */
     User checkUser(String username, String password);
+
+    User getUserById(Integer userId);
 }

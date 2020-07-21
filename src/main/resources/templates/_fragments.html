@@ -33,10 +33,12 @@
                 <i class="small address card outline icon"></i>关于我
             </a>
             <div class="right m-item item m-mobile-hide">
-                <div class="ui icon inverted transparent input">
-                    <input type="text" placeholder="Search...">
-                    <i class="search link icon"></i>
-                </div>
+                <form name="search" action="#" method="post" target="_blank" th:action="@{/search}">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" name="query" placeholder="Search...">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

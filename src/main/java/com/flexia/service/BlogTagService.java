@@ -18,6 +18,8 @@ public interface BlogTagService {
 
     String getTagIdsByBlogId(Integer blogId);
 
+    List<Blog> getBlogsByTagId(Integer tagId);
+
     void saveBlogTag(Blog blog);
 
     void updateBlogTag(Blog blog);

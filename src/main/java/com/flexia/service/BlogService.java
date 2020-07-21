@@ -1,7 +1,6 @@
 package com.flexia.service;
 
 import com.flexia.entity.Blog;
-import com.flexia.entity.Tag;
 
 import java.util.List;
 
@@ -22,5 +21,11 @@ public interface BlogService {
 
     List<Blog> listBlog();
 
+    List<Blog> listRecommendBlog(Integer size);
+
+    List<Blog> listBlog(String query);
+
     List<Blog> getBlogByKeyWords(String title, Integer typeId, Boolean recommend);
+
+    Blog getAndConvert(Integer blogId);
 }

@@ -131,7 +131,7 @@ public class BlogController {
         blog.setType(typeService.getTypeById(blog.getTypeId()));
         blog.setTags(tagService.listTag(tagIds));
 
-        blog.setUserId(blog.getUser().getId());
+        blog.setUserId(blog.getUser().getUserId());
         blog.setAppreciation(blog.getAppreciation() != null);
         blog.setShareStatement(blog.getShareStatement() != null);
         blog.setPublish(blog.getPublish());

@@ -5,8 +5,9 @@ import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
 import com.flexia.service.BlogService;
 import com.flexia.service.BlogTagService;
-import com.flexia.service.TagService;
 import com.flexia.service.TypeService;
+import com.flexia.service.UserService;
+import com.flexia.util.MarkdownUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -35,10 +36,13 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogTagService blogTagService;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public Blog getBlogById(Integer blogId) {
         Blog blog = blogMapper.selectByPrimaryKey(blogId);
-        setBlogProperties(Collections.singletonList(blog));
+        this.setBlogProperties(Collections.singletonList(blog));
         return blog;
     }
 
@@ -93,7 +97,39 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<Blog> listBlog() {
         List<Blog> blogs = blogMapper.selectAll();
-        setBlogProperties(blogs);
+        this.setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
+     * 获取最新推荐的博客列表
+     *
+     * @return
+     */
+    @Override
+    public List<Blog> listRecommendBlog(Integer size) {
+        Example example = new Example(Blog.class);
+        example.setOrderByClause("update_time desc limit " + size);
+        List<Blog> blogs = blogMapper.selectByExample(example);
+        this.setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
+     * 根据搜索的关键词查询博客列表
+     *
+     * @param query
+     * @return
+     */
+    @Override
+    public List<Blog> listBlog(String query) {
+        query = "%" + query + "%";
+        Example example = new Example(Blog.class);
+        example.createCriteria()
+                .orLike("title", query)
+                .orLike("content", query);
+        List<Blog> blogs = blogMapper.selectByExample(example);
+        this.setBlogProperties(blogs);
         return blogs;
     }
 
@@ -127,6 +163,27 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
+     * 获取博客并转换为html文本
+     *
+     * @param blogId
+     * @return
+     */
+    @Override
+    public Blog getAndConvert(Integer blogId) {
+        Blog blog = blogMapper.selectByPrimaryKey(blogId);
+        if (blog == null) {
+            throw new NotFoundException("该博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog, b);
+        String content = b.getContent();
+        content = MarkdownUtils.markdownToHtmlExtensions(content);
+        b.setContent(content);
+        this.setBlogProperties(Collections.singletonList(b));
+        return b;
+    }
+
+    /**
      * 设置查询得到的博客的相关信息
      *
      * @param blogs
@@ -137,6 +194,8 @@ public class BlogServiceImpl implements BlogService {
             blog.setType(typeService.getTypeById(blog.getTypeId()));
             // 标签
             blog.setTags(blogTagService.getTagsByBlogId(blog.getBlogId()));
+            // 用户
+            blog.setUser(userService.getUserById(blog.getUserId()));
         }
     }
 }

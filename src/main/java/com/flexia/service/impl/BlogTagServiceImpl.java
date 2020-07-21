@@ -4,6 +4,7 @@ import com.flexia.entity.Blog;
 import com.flexia.entity.BlogTag;
 import com.flexia.entity.Tag;
 import com.flexia.mapper.BlogTagMapper;
+import com.flexia.service.BlogService;
 import com.flexia.service.BlogTagService;
 import com.flexia.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class BlogTagServiceImpl implements BlogTagService {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private BlogService blogService;
 
     /**
      * 根据博客id查询博客与标签的对应关系集合
@@ -76,6 +80,18 @@ public class BlogTagServiceImpl implements BlogTagService {
             tagIds.append(blogTag.getTagId());
         }
         return tagIds.toString();
+    }
+
+    @Override
+    public List<Blog> getBlogsByTagId(Integer tagId) {
+        Example example = new Example(BlogTag.class);
+        example.createCriteria().andEqualTo("tagId", tagId);
+        List<BlogTag> blogTags = blogTagMapper.selectByExample(example);
+        List<Blog> blogs = new ArrayList<>();
+        for (BlogTag blogTag : blogTags) {
+            blogs.add(blogService.getBlogById(blogTag.getBlogId()));
+        }
+        return blogs;
     }
 
     /**

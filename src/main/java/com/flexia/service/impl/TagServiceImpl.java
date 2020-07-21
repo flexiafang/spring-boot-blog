@@ -1,11 +1,10 @@
 package com.flexia.service.impl;
 
 import com.flexia.entity.Blog;
-import com.flexia.entity.BlogTag;
 import com.flexia.entity.Tag;
 import com.flexia.exception.NotFoundException;
-import com.flexia.mapper.BlogTagMapper;
 import com.flexia.mapper.TagMapper;
+import com.flexia.service.BlogTagService;
 import com.flexia.service.TagService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +28,7 @@ public class TagServiceImpl implements TagService {
     private TagMapper tagMapper;
 
     @Autowired
-    private BlogTagMapper blogTagMapper;
+    private BlogTagService blogTagService;
 
 
     @Transactional(rollbackFor = Exception.class)
@@ -47,6 +46,27 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<Tag> listTag() {
         return tagMapper.selectAll();
+    }
+
+    /**
+     * 获取使用量在前size位的标签集
+     *
+     * @param size
+     * @return
+     */
+    @Override
+    public List<Tag> listTag(Integer size) {
+        List<Tag> tags = this.listTag();
+        for (Tag tag : tags) {
+            List<Blog> blogs = blogTagService.getBlogsByTagId(tag.getTagId());
+            tag.setBlogList(blogs);
+        }
+        tags.sort((o1, o2) -> o2.getBlogList().size() - o1.getBlogList().size());
+        List<Tag> topTags = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            topTags.add(tags.get(i));
+        }
+        return topTags;
     }
 
     @Override
