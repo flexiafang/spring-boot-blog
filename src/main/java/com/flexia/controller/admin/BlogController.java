@@ -1,10 +1,10 @@
 package com.flexia.controller.admin;
 
 import com.flexia.entity.Blog;
-import com.flexia.entity.Tag;
 import com.flexia.entity.Type;
 import com.flexia.entity.User;
 import com.flexia.service.BlogService;
+import com.flexia.service.BlogTagService;
 import com.flexia.service.TagService;
 import com.flexia.service.TypeService;
 import com.github.pagehelper.Page;
@@ -36,6 +36,9 @@ public class BlogController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private BlogTagService blogTagService;
 
     /**
      * 跳转到博客列表页面
@@ -98,7 +101,7 @@ public class BlogController {
     public String edit(@PathVariable Integer id, Model model) {
         setTypeAndTag(model);
         model.addAttribute("blog", blogService.getBlogById(id));
-        model.addAttribute("tagIds", tagService.getTagIds(id));
+        model.addAttribute("tagIds", blogTagService.getTagIdsByBlogId(id));
         return "admin/blog-input";
     }
 
@@ -128,12 +131,39 @@ public class BlogController {
         blog.setType(typeService.getTypeById(blog.getTypeId()));
         blog.setTags(tagService.listTag(tagIds));
 
-        Blog b = blogService.saveBlog(blog);
+        blog.setUserId(blog.getUser().getId());
+        blog.setAppreciation(blog.getAppreciation() != null);
+        blog.setShareStatement(blog.getShareStatement() != null);
+        blog.setPublish(blog.getPublish());
+        blog.setRecommend(blog.getRecommend() != null);
+
+        // 发布或修改博客
+        Blog b;
+        Integer blogId = blog.getBlogId();
+        if (blogId == null) {
+            b = blogService.saveBlog(blog);
+        } else {
+            Blog blogById = blogService.getBlogById(blogId);
+            blog.setCreateTime(blogById.getCreateTime());
+            blog.setViews(blogById.getViews());
+            b = blogService.updateBlog(blog);
+        }
 
         if (b == null) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {
             attributes.addFlashAttribute("message", "操作成功");
+        }
+        return "redirect:/admin/blogs";
+    }
+
+    @GetMapping("/blogs/{id}/delete")
+    public String delete(@PathVariable Integer id, RedirectAttributes attributes) {
+        int count = blogService.deleteBlog(id);
+        if (count == 0) {
+            attributes.addFlashAttribute("message", "删除失败");
+        } else {
+            attributes.addFlashAttribute("message", "删除成功");
         }
         return "redirect:/admin/blogs";
     }

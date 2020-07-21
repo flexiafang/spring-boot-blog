@@ -37,8 +37,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
+            <a href="#" th:href="@{/admin/blogs}" class="teal active item">列表</a>
         </div>
     </div>
 </div>
@@ -90,6 +90,7 @@
                     <th>类型</th>
                     <th>推荐</th>
                     <th>状态</th>
+                    <th>标识</th>
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
@@ -102,6 +103,7 @@
                     <td th:text="${blog.type.name}">认知升级</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">是</td>
                     <td th:text="${blog.publish} ? '已发布' : '草稿'">已发布</td>
+                    <td th:text="${blog.flag}">原创</td>
                     <td th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd HH:mm')}">2020-07-02 09:30</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/update(id=${blog.blogId})}"
@@ -116,7 +118,7 @@
 
                 <tfoot>
                 <tr>
-                    <th colspan="7">
+                    <th colspan="10">
                         <div class="ui left floated pagination menu" th:if="${pageInfo.total}>${pageInfo.pageSize}">
                             <a class="ui item" onclick="page(this)" th:attr="data-page=${pageInfo.pageNum}-1"
                                th:unless="${pageInfo.isFirstPage}">

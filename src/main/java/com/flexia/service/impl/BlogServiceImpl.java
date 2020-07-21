@@ -3,8 +3,8 @@ package com.flexia.service.impl;
 import com.flexia.entity.Blog;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
-import com.flexia.mapper.BlogTagMapper;
 import com.flexia.service.BlogService;
+import com.flexia.service.BlogTagService;
 import com.flexia.service.TagService;
 import com.flexia.service.TypeService;
 import org.slf4j.Logger;
@@ -30,10 +30,10 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Autowired
-    private TagService tagService;
+    private TypeService typeService;
 
     @Autowired
-    private TypeService typeService;
+    private BlogTagService blogTagService;
 
     @Override
     public Blog getBlogById(Integer blogId) {
@@ -49,7 +49,12 @@ public class BlogServiceImpl implements BlogService {
         blog.setUpdateTime(new Date());
         blog.setViews(0);
         int count = blogMapper.insert(blog);
-        return count == 0 ? null : blog;
+        if (count == 0) {
+            return null;
+        } else {
+            blogTagService.saveBlogTag(blog);
+            return blog;
+        }
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -60,7 +65,9 @@ public class BlogServiceImpl implements BlogService {
             throw new NotFoundException("不存在该博客");
         }
         BeanUtils.copyProperties(blog, b);
+        b.setUpdateTime(new Date());
         blogMapper.updateByPrimaryKey(b);
+        blogTagService.updateBlogTag(b);
         return b;
     }
 
@@ -69,6 +76,7 @@ public class BlogServiceImpl implements BlogService {
     public int deleteBlog(Integer id) {
         int count = 0;
         try {
+            blogTagService.deleteBlogTag(id);
             count = blogMapper.deleteByPrimaryKey(id);
         } catch (Exception e) {
             Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -128,7 +136,7 @@ public class BlogServiceImpl implements BlogService {
             // 分类
             blog.setType(typeService.getTypeById(blog.getTypeId()));
             // 标签
-            blog.setTags(tagService.getTagsByBlogId(blog.getBlogId()));
+            blog.setTags(blogTagService.getTagsByBlogId(blog.getBlogId()));
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.flexia.service;
 
+import com.flexia.entity.Blog;
 import com.flexia.entity.Tag;
 
 import java.util.List;
@@ -24,8 +25,4 @@ public interface TagService {
     Tag updateTag(Tag tag);
 
     int deleteTag(Integer id);
-
-    List<Tag> getTagsByBlogId(Integer blogId);
-
-    String getTagIds(Integer blogId);
 }
