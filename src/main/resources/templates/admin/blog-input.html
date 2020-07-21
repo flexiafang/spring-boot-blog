@@ -123,8 +123,8 @@
                 </div>
             </div>
 
-            <div class="field">
-                <textarea name="description" th:text="*{description}" placeholder="博客描述..." maxlength="200"></textarea>
+            <div class="required field">
+                <textarea name="description" placeholder="博客描述..." maxlength="200" th:text="*{description}"></textarea>
             </div>
 
             <div class="inline fields">
@@ -276,6 +276,13 @@
             },
             firstPicture: {
                 identifier: 'firstPicture',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入博客首图'
+                }]
+            },
+            description: {
+                identifier: 'description',
                 rules: [{
                     type: 'empty',
                     prompt: '请输入博客首图'
