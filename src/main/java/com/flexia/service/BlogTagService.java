@@ -7,6 +7,7 @@ import com.flexia.entity.Tag;
 import java.util.List;
 
 /**
+ * @Description 博客标签对应关系的业务层接口
  * @Author hustffx
  * @Date 2020/7/21
  */

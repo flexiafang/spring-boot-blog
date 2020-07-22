@@ -10,3 +10,5 @@ pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
+
+comment.avatar: /images/avatar.jpg

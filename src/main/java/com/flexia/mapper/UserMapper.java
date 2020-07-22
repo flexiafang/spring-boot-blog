@@ -11,7 +11,4 @@ import tk.mybatis.mapper.common.Mapper;
  * @Date 2020/7/14
  */
 public interface UserMapper extends Mapper<User> {
-
-    @Select("select * from user where username = #{username} and password = #{password}")
-    User findByUsernameAndPassWord(@Param("username") String username, @Param("password") String password);
 }

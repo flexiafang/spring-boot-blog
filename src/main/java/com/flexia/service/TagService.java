@@ -5,7 +5,7 @@ import com.flexia.entity.Tag;
 import java.util.List;
 
 /**
- * @Description 分类的业务层接口
+ * @Description 标签的业务层接口
  * @Author hustffx
  * @Date 2020/7/14
  */

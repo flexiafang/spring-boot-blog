@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,8 +22,8 @@ import java.util.List;
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "JDBC")
+    private Integer commentId;
     private String nickname;
     private String email;
     private String content;
@@ -32,6 +31,11 @@ public class Comment {
     private Date createTime;
     private Integer blogId;
     private Integer parentCommentId;
+
     @Transient
     private List<Comment> replyComments;
+    @Transient
+    private Blog blog;
+    @Transient
+    private Comment parentComment;
 }

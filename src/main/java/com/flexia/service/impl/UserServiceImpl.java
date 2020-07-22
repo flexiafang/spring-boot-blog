@@ -3,8 +3,10 @@ package com.flexia.service.impl;
 import com.flexia.entity.User;
 import com.flexia.mapper.UserMapper;
 import com.flexia.service.UserService;
+import com.flexia.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * @Author hustffx
@@ -18,7 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
-        return userMapper.findByUsernameAndPassWord(username, password);
+        Example example = new Example(User.class);
+        example.createCriteria()
+                .andEqualTo("username", username)
+                .andEqualTo("password", password);
+        return userMapper.selectOneByExample(example);
     }
 
     @Override

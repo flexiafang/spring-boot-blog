@@ -29,5 +29,8 @@ public class Tag {
     private String name;
 
     @Transient
+    private Integer blogNum;
+
+    @Transient
     private List<Blog> blogList;
 }

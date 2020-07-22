@@ -77,7 +77,8 @@
                                                 <span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2020-07-02</span>
                                             </div>
                                             <div class="item">
-                                                <i class="eye icon"></i><span th:text="${blog.views}">1234</span>
+                                                <i class="eye icon"></i>
+                                                <span th:text="${blog.views}">1234</span>
                                             </div>
                                         </div>
                                     </div>
@@ -241,8 +242,8 @@
                 </div>
 
                 <!--footer-->
-                <div class="ui bottom attached segment">
-                    <div class="ui middle aligned two column grid" th:if="${pageInfo.total}>${pageInfo.pageSize}">
+                <div class="ui bottom attached segment" th:if="${pageInfo.total}>${pageInfo.pageSize}">
+                    <div class="ui middle aligned two column grid">
                         <div class="column">
                             <a href="#" class="ui teal basic mini button"
                                th:href="@{/(page=${pageInfo.pageNum}-1)}"
@@ -274,7 +275,7 @@
                             <a href="#" class="item" th:each="type : ${types}">
                                 <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal basic left pointing label"
-                                     th:text="${#arrays.length(type.blogList)}">13
+                                     th:text="${type.blogNum}">13
                                 </div>
                             </a>
                             <!--/*-->
@@ -312,7 +313,7 @@
                         <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny"
                            th:each="tag : ${tags}">
                             <span th:text="${tag.name}">方法论</span>
-                            <div class="detail" th:text="${#arrays.length(tag.blogList)}">12</div>
+                            <div class="detail" th:text="${tag.blogNum}">12</div>
                         </a>
                         <!--/*-->
                         <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">

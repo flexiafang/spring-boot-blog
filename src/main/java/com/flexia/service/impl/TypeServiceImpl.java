@@ -1,6 +1,5 @@
 package com.flexia.service.impl;
 
-import com.flexia.entity.Blog;
 import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,19 +47,7 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public List<Type> listType(Integer size) {
-        List<Type> types = this.listType();
-        for (Type type : types) {
-            Example example = new Example(Blog.class);
-            example.createCriteria().andEqualTo("typeId", type.getTypeId());
-            List<Blog> blogs = blogMapper.selectByExample(example);
-            type.setBlogList(blogs);
-        }
-        types.sort((o1, o2) -> o2.getBlogList().size() - o1.getBlogList().size());
-        List<Type> topTypes = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            topTypes.add(types.get(i));
-        }
-        return topTypes;
+        return typeMapper.getTopTypes(size);
     }
 
     @Override
