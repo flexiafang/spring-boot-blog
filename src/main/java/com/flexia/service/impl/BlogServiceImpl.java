@@ -163,6 +163,21 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
+     * 根据分类id查询博客列表
+     *
+     * @param typeId
+     * @return
+     */
+    @Override
+    public List<Blog> getBlogByTypeId(Integer typeId) {
+        Example example = new Example(Blog.class);
+        example.createCriteria().andEqualTo("typeId", typeId);
+        List<Blog> blogs = blogMapper.selectByExample(example);
+        this.setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
      * 获取博客并转换为html文本
      *
      * @param blogId

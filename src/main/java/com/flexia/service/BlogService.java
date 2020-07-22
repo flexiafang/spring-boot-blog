@@ -27,5 +27,7 @@ public interface BlogService {
 
     List<Blog> getBlogByKeyWords(String title, Integer typeId, Boolean recommend);
 
+    List<Blog> getBlogByTypeId(Integer typeId);
+
     Blog getAndConvert(Integer blogId);
 }

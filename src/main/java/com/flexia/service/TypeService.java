@@ -24,4 +24,6 @@ public interface TypeService {
     Type updateType(Type type);
 
     int deleteType(Integer id);
+
+    Integer getTotal();
 }

@@ -275,6 +275,22 @@
             </div>
             <!--*/-->
         </div>
+
+        <!--footer-->
+        <div class="ui bottom attached segment" th:if="${pageInfo.total}>${pageInfo.pageSize}">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <a href="#" class="ui teal basic mini button"
+                       th:href="@{/(page=${pageInfo.pageNum}-1)}"
+                       th:unless="${pageInfo.isFirstPage}">上一页</a>
+                </div>
+                <div class="right aligned column">
+                    <a href="#" class="ui teal basic mini button"
+                       th:href="@{/(page=${pageInfo.pageNum}+1)}"
+                       th:unless="${pageInfo.isLastPage}">下一页</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

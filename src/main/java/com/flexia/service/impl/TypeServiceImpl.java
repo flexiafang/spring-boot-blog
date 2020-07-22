@@ -1,9 +1,11 @@
 package com.flexia.service.impl;
 
+import com.flexia.entity.Blog;
 import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.BlogMapper;
 import com.flexia.mapper.TypeMapper;
+import com.flexia.service.BlogService;
 import com.flexia.service.TypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,9 @@ public class TypeServiceImpl implements TypeService {
     @Autowired
     private BlogMapper blogMapper;
 
+    @Autowired
+    private BlogService blogService;
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public Type saveType(Type type) {
@@ -47,7 +52,14 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public List<Type> listType(Integer size) {
-        return typeMapper.getTopTypes(size);
+        List<Type> types = typeMapper.getTopTypes(size);
+        for (Type type : types) {
+            Integer typeId = typeMapper.selectOne(type).getTypeId();
+            type.setTypeId(typeId);
+            List<Blog> blogs = blogService.getBlogByTypeId(typeId);
+            type.setBlogList(blogs);
+        }
+        return types;
     }
 
     @Override
@@ -80,5 +92,10 @@ public class TypeServiceImpl implements TypeService {
             logger.error("Cause exception when delete type. {}", e.getMessage());
         }
         return count;
+    }
+
+    @Override
+    public Integer getTotal() {
+        return typeMapper.selectCount(null);
     }
 }
