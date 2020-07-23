@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author hustffx
@@ -178,6 +176,40 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
+     * 根据标签id查询博客列表
+     *
+     * @param tagId
+     * @return
+     */
+    @Override
+    public List<Blog> getBlogByTagId(Integer tagId) {
+        List<Blog> blogs = blogTagService.getBlogsByTagId(tagId);
+        this.setBlogProperties(blogs);
+        return blogs;
+    }
+
+    /**
+     * 博客归档
+     *
+     * @return
+     */
+    @Override
+    public Map<Integer, List<Blog>> archiveBlog() {
+        List<Integer> years = blogMapper.findYearsGroupByYear();
+        Map<Integer, List<Blog>> map = new LinkedHashMap<>(4);
+        for (Integer year : years) {
+            List<Blog> blogs = blogMapper.getBlogByYear(year);
+            List<Blog> blogList = new ArrayList<>();
+            for (Blog blog : blogs) {
+                blogList.add(blogMapper.selectOne(blog));
+            }
+            this.setBlogProperties(blogList);
+            map.put(year, blogList);
+        }
+        return map;
+    }
+
+    /**
      * 获取博客并转换为html文本
      *
      * @param blogId
@@ -212,5 +244,10 @@ public class BlogServiceImpl implements BlogService {
             // 用户
             blog.setUser(userService.getUserById(blog.getUserId()));
         }
+    }
+
+    @Override
+    public Integer getTotal() {
+        return blogMapper.selectCount(null);
     }
 }

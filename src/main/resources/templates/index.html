@@ -56,7 +56,7 @@
                     <div class="ui vertical segment m-padded-tb-large" th:each="blog : ${pageInfo.list}">
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="eleven wide column">
-                                <h3 class="ui header"><a href="#" class="m-color-black" target="_blank"
+                                <h3 class="ui header"><a href="#" class="m-color-black"
                                                          th:href="@{/blog/{id}(id=${blog.blogId})}"
                                                          th:text="${blog.title}">
                                     你真的理解什么是财富自由吗？</a></h3>
@@ -83,14 +83,14 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
+                                        <a href="#"
                                            class="ui teal basic label m-padded-tiny m-text-thin"
                                            th:text="${blog.type.name}">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.blogId})}">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.blogId})}">
                                     <img src="https://picsum.photos/id/903/500/400" alt="" class="ui rounded image"
                                          th:src="@{${blog.firstPicture}}">
                                 </a>
@@ -121,13 +121,13 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
+                                        <a href="#"
                                            class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#">
                                     <img src="https://picsum.photos/id/903/500/400" alt="" class="ui rounded image">
                                 </a>
                             </div>
@@ -156,13 +156,13 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
+                                        <a href="#"
                                            class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#">
                                     <img src="https://picsum.photos/id/903/500/400" alt="" class="ui rounded image">
                                 </a>
                             </div>
@@ -191,13 +191,13 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
-                                           class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
+                                        <a href="#">
+                                            class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#">
                                     <img src="https://picsum.photos/id/903/500/400" alt="" class="ui rounded image">
                                 </a>
                             </div>
@@ -226,13 +226,13 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank"
+                                        <a href="#"
                                            class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="five wide column">
-                                <a href="#" target="_blank">
+                                <a href="#">
                                     <img src="https://picsum.photos/id/903/500/400" alt="" class="ui rounded image">
                                 </a>
                             </div>
@@ -266,13 +266,17 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column"><i class="th icon"></i>分类</div>
-                            <div class="right aligned column"><a href="#" target="_blank">more<i
-                                    class="angle double right icon"></i></a></div>
+                            <div class="right aligned column">
+                                <a href="#" th:href="@{/types/-1}">
+                                    more<i class="angle double right icon"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
                         <div class="ui fluid vertical menu">
-                            <a href="#" class="item" th:each="type : ${types}">
+                            <a href="#" class="item" th:each="type : ${types}"
+                               th:href="@{/types/{id}(id=${type.typeId})}">
                                 <span th:text="${type.name}">学习日志</span>
                                 <div class="ui teal basic left pointing label"
                                      th:text="${type.blogNum}">13
@@ -305,34 +309,37 @@
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column"><i class="tags icon"></i>标签</div>
-                            <div class="right aligned column"><a href="#" target="_blank">more<i
-                                    class="angle double right icon"></i></a></div>
+                            <div class="right aligned column">
+                                <a href="#" th:href="@{/tags/-1}">
+                                    more<i class="angle double right icon"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny"
-                           th:each="tag : ${tags}">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny"
+                           th:each="tag : ${tags}" th:href="@{/tags/{id}(id=${tag.tagId})}">
                             <span th:text="${tag.name}">方法论</span>
                             <div class="detail" th:text="${tag.blogNum}">12</div>
                         </a>
                         <!--/*-->
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             方法论
                             <div class="detail">12</div>
                         </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             方法论
                             <div class="detail">12</div>
                         </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             方法论
                             <div class="detail">12</div>
                         </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             方法论
                             <div class="detail">12</div>
                         </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" class="ui teal basic left pointing label m-margin-tb-tiny">
                             方法论
                             <div class="detail">12</div>
                         </a>
@@ -346,18 +353,18 @@
                         <i class="bookmark icon"></i>最新推荐
                     </div>
                     <div class="ui segment m-color-black" th:each="blog : ${recommendBlogs}">
-                        <a href="#" target="_blank" class="m-color-black m-text-thin"
+                        <a href="#" class="m-color-black m-text-thin"
                            th:text="${blog.title}" th:href="@{/blog/{id}(id=${blog.blogId})}">用户故事（User Story）</a>
                     </div>
                     <!--/*-->
                     <div class="ui segment m-color-black">
-                        <a href="#" target="_blank" class="m-color-black m-text-thin">用户故事（User Story）</a>
+                        <a href="#" class="m-color-black m-text-thin">用户故事（User Story）</a>
                     </div>
                     <div class="ui segment m-color-black">
-                        <a href="#" target="_blank" class="m-color-black m-text-thin">用户故事（User Story）</a>
+                        <a href="#" class="m-color-black m-text-thin">用户故事（User Story）</a>
                     </div>
                     <div class="ui segment m-color-black">
-                        <a href="#" target="_blank" class="m-color-black m-text-thin">用户故事（User Story）</a>
+                        <a href="#" class="m-color-black m-text-thin">用户故事（User Story）</a>
                     </div>
                     <!--*/-->
                 </div>

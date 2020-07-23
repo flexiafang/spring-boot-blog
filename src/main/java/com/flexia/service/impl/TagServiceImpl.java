@@ -1,9 +1,10 @@
 package com.flexia.service.impl;
 
+import com.flexia.entity.Blog;
 import com.flexia.entity.Tag;
 import com.flexia.exception.NotFoundException;
 import com.flexia.mapper.TagMapper;
-import com.flexia.service.BlogTagService;
+import com.flexia.service.BlogService;
 import com.flexia.service.TagService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class TagServiceImpl implements TagService {
     private TagMapper tagMapper;
 
     @Autowired
-    private BlogTagService blogTagService;
+    private BlogService blogService;
 
 
     @Transactional(rollbackFor = Exception.class)
@@ -55,7 +56,14 @@ public class TagServiceImpl implements TagService {
      */
     @Override
     public List<Tag> listTag(Integer size) {
-        return tagMapper.getTopTags(size);
+        List<Tag> tags = tagMapper.getTopTags(size);
+        for (Tag tag : tags) {
+            Integer tagId = tagMapper.selectOne(tag).getTagId();
+            tag.setTagId(tagId);
+            List<Blog> blogs = blogService.getBlogByTagId(tagId);
+            tag.setBlogList(blogs);
+        }
+        return tags;
     }
 
     @Override
@@ -116,5 +124,10 @@ public class TagServiceImpl implements TagService {
             logger.error("Cause exception when delete tag. {}", e.getMessage());
         }
         return count;
+    }
+
+    @Override
+    public Integer getTotal() {
+        return tagMapper.selectCount(null);
     }
 }

@@ -26,4 +26,6 @@ public interface TagService {
     Tag updateTag(Tag tag);
 
     int deleteTag(Integer id);
+
+    Integer getTotal();
 }

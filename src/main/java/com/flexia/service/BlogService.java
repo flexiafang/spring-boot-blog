@@ -3,6 +3,7 @@ package com.flexia.service;
 import com.flexia.entity.Blog;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 博客的业务层接口
@@ -29,5 +30,11 @@ public interface BlogService {
 
     List<Blog> getBlogByTypeId(Integer typeId);
 
+    List<Blog> getBlogByTagId(Integer tagId);
+
+    Map<Integer, List<Blog>> archiveBlog();
+
     Blog getAndConvert(Integer blogId);
+
+    Integer getTotal();
 }

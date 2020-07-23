@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface TagMapper extends Mapper<Tag> {
 
-    @Select("select distinct tag.*, count(blog_tag.blog_tag_id) as blogNum from tag left join blog_tag " +
+    @Select("select distinct tag.*, count(blog_tag.blog_id) as blogNum from tag left join blog_tag " +
             "on tag.tag_id = blog_tag.tag_id group by tag.tag_id order by blogNum desc limit #{size}")
     List<Tag> getTopTags(@Param("size") Integer size);
 }

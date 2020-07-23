@@ -105,6 +105,7 @@ public class BlogTagServiceImpl implements BlogTagService {
         BlogTag blogTag = new BlogTag();
         blogTag.setBlogId(blog.getBlogId());
         for (Tag tag : blog.getTags()) {
+            blogTag.setBlogTagId(null);
             blogTag.setTagId(tag.getTagId());
             blogTagMapper.insert(blogTag);
         }
@@ -136,6 +137,7 @@ public class BlogTagServiceImpl implements BlogTagService {
         // 添加新的对应关系
         for (Tag newTag : newTags) {
             if (!oldTags.contains(newTag)) {
+                blogTag.setBlogTagId(null);
                 blogTag.setTagId(newTag.getTagId());
                 blogTagMapper.insert(blogTag);
             }

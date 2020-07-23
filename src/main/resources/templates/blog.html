@@ -519,21 +519,23 @@ h5,h6{font-size:1em;}
             </div>
 
             <!--赞赏-->
-            <div class="ui center aligned basic segment">
-                <button id="pay-btn" class="ui orange basic circular button">赞赏</button>
-            </div>
-            <div class="ui payQRCode flowing popup transition hidden">
-                <div class="ui orange basic label">
-                    <div class="ui images" style="font-size: inherit !important;">
-                        <div class="image">
-                            <img src="../static/images/alipay.jpg" alt="" class="ui rounded bordered image"
-                                 style="width: 200px" th:src="@{/images/alipay.jpg}">
-                            <div>支付宝</div>
-                        </div>
-                        <div class="image">
-                            <img src="../static/images/wechatpay.png" alt="" class="ui rounded bordered image"
-                                 style="width: 200px" th:src="@{/images/wechatpay.png}">
-                            <div>微信支付</div>
+            <div th:if="${blog.appreciation}">
+                <div class="ui center aligned basic segment">
+                    <button id="pay-btn" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <div class="ui payQRCode flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="../static/images/alipay.jpg" alt="" class="ui rounded bordered image"
+                                     style="width: 200px" th:src="@{/images/alipay.jpg}">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/wechatpay.png" alt="" class="ui rounded bordered image"
+                                     style="width: 200px" th:src="@{/images/wechatpay.png}">
+                                <div>微信支付</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -541,12 +543,12 @@ h5,h6{font-size:1em;}
         </div>
 
         <!--博客信息-->
-        <div class="ui attached positive message">
+        <div class="ui attached positive message" th:if="${blog.shareStatement}">
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
                     <ui class="list">
                         <li>作者：<span th:text="${blog.user.nickname}">小方方</span>
-                            <a href="#" target="_blank" th:href="@{/about}">（联系作者）</a>
+                            <a href="#" th:href="@{/about}">（联系作者）</a>
                         </li>
                         <li>发表时间：
                             <span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd HH:mm')}">2020-07-02 22:32</span>
@@ -563,7 +565,7 @@ h5,h6{font-size:1em;}
         </div>
 
         <!--留言区域-->
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" th:if="${blog.comment}">
             <!--留言列表-->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">

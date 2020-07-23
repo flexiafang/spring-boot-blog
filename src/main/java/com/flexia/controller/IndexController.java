@@ -43,13 +43,13 @@ public class IndexController {
         PageInfo<Blog> pageInfo = new PageInfo<>(blogPage);
         model.addAttribute("pageInfo", pageInfo);
 
-        List<Type> types = typeService.listType(6);
+        List<Type> types = typeService.listType(10);
         model.addAttribute("types", types);
 
-        List<Tag> tags = tagService.listTag(6);
+        List<Tag> tags = tagService.listTag(10);
         model.addAttribute("tags", tags);
 
-        List<Blog> blogs = blogService.listRecommendBlog(8);
+        List<Blog> blogs = blogService.listRecommendBlog(10);
         model.addAttribute("recommendBlogs", blogs);
         return "index";
     }
@@ -69,5 +69,16 @@ public class IndexController {
     public String blog(@PathVariable Integer id, Model model) {
         model.addAttribute("blog", blogService.getAndConvert(id));
         return "blog";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+    @GetMapping("/footer/newBlogList")
+    public String newBlogs(Model model) {
+        model.addAttribute("newBlogs", blogService.listRecommendBlog(3));
+        return "_fragments :: newBlogList";
     }
 }

@@ -3,7 +3,6 @@ package com.flexia.service.impl;
 import com.flexia.entity.Blog;
 import com.flexia.entity.Type;
 import com.flexia.exception.NotFoundException;
-import com.flexia.mapper.BlogMapper;
 import com.flexia.mapper.TypeMapper;
 import com.flexia.service.BlogService;
 import com.flexia.service.TypeService;
@@ -26,9 +25,6 @@ public class TypeServiceImpl implements TypeService {
 
     @Autowired
     private TypeMapper typeMapper;
-
-    @Autowired
-    private BlogMapper blogMapper;
 
     @Autowired
     private BlogService blogService;

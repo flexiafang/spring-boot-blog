@@ -1,10 +1,12 @@
 package com.flexia.controller.admin;
 
 import com.flexia.entity.User;
+import com.flexia.service.BlogService;
 import com.flexia.service.UserService;
 import com.flexia.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,9 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BlogService blogService;
 
     /**
      * 跳转到登录页面
@@ -80,5 +85,11 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.removeAttribute("user");
         return "redirect:/admin";
+    }
+
+    @GetMapping("/footer/newBlogList")
+    public String newBlogs(Model model) {
+        model.addAttribute("newBlogs", blogService.listRecommendBlog(3));
+        return "admin/_fragments :: newBlogList";
     }
 }
