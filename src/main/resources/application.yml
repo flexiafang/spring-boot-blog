@@ -5,6 +5,11 @@ spring:
     active: dev
   messages:
     basename: i18n/messages
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+    timeout: 10000
 
 pagehelper:
   helperDialect: mysql
